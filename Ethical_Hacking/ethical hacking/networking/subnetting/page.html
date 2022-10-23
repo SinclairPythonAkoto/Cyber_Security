@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Subnetting</title>
+</head><body><b><u>Subnetting</u></b><br/>
+<ul><li><i>Understanding the host allocation and the maths behind it</i></li>
+</ul>
+<br/>
+To find out our machine's subnet we execute the <b>ifconfig</b>&nbsp;command in the terminal.<br/>
+<br/>
+<tt>ifconfig</tt><br/>
+<img src="image.png" /><br/>
+You will find the subnet labelled under <b>netmask</b>.<br/>
+<br/>
+Subnets are just like IP addresses, by converting data into bits. &nbsp;And just like in IP addresses, each 255 <i>(numerical)</i>&nbsp;value is equivilent to 8 bit.<br/>
+Because these values are represented in a <b>binary</b>&nbsp;<b>numbers</b>&nbsp;<i>(1's and 0's)</i>, the <i>binary value of 1</i>&nbsp;means there is a valid number from 1 - 255;<br/>
+while the <i>binary value of 0</i>&nbsp;signifies an empty value (this is 0 in the subnet).<br/>
+<br/>
+Depending on how the binaray values are switched on will determine a lot of things for us - which is why it is important!<br/>
+<br/>
+<br/>
+<b>Calculating Hosts &amp; Networks</b><br/>
+Let's look at how we can find an easy way to calculate the number of hosts for any given IP address.<br/>
+We will look at one of the most common subnet addresses (255.255.255.0) and how things work in the background.<br/>
+<br/>
+<b>wack 24 / slash 24 network<br/>
+</b><img src="image 3.png" /><br/>
+<i>This diagram shows how subnets work under the hood. This is a common subnet for households and small businesses becuase it holds up to 256 hosts.</i><br/>
+<br/>
+<br/>
+As we covered before, these subnet addresses are made up of<b>&nbsp;binary numbers</b>, amounting to <i>8 bits each <b>(4x 8 bits - 32 bits being the max)</b></i>. &nbsp;<br/>
+Each 1x bit from the 8 bit is a binary value from 1 - 255; if a number between that exists then the switch is opened<br/>
+and a binay value of 1 is returned. &nbsp;If the binary number below is 0, then that means the switch is closed.<br/>
+<br/>
+As you can see we start the bit values from 128, then the value decreases by half each bit value that comes after.<br/>
+Starting from point A (this is the starting point of the first 8 bits), the switch will start from there and work its way down to the last swtich.<br/>
+<i>If we add all the bit numbers together we will get 255 for each 8 bit.</i><br/>
+<br/>
+<b>The switches have to work in order, you will not have a switch that has skipped prior switches.</b><br/>
+<br/>
+We calculate the number of hosts by how many bits are swicthed off. &nbsp;<br/>
+<b>This tells us how many hosts are available to us</b>&nbsp;(<i>calculate 2 to the power of switched off bits</i>).<br/>
+<ul><li><i>&nbsp;<b>2 ** 8</b>&nbsp;means 8 hosts are available means 8 bits left switched off.</i></li>
+</ul>
+<br/>
+The amount of hosts you can have on your private network is determined by how you set your subnet mask.<br/>
+If you check on the cheat csheet, as you turn off the bits the number of hosts increases.<br/>
+<ul><li>We always subtract 2 from the final amount of hosts because we need to accomondate for the <b>Broadcast address</b>&nbsp;and <b>Network ID address</b>.</li>
+</ul>
+<br/>
+<br/>
+<b>Subnetting cheat sheet</b><br/>
+<img src="image 2.png" /><br/>
+<br/>
+<br/>
+Lets look at how we could create a shortcut to help us do the same <i>(in case for exams/inetrviews etc).<br/>
+</i>We will set ou numbers from 1 to 32 in rows of 4x - this will be our bits. &nbsp;Then we will list the bit numbers for the host &amp; subnet.<br/>
+<br/>
+<b>Cheat sheet shortcut</b><br/>
+<img src="image 4.png" /><br/>
+<br/>
+How did we work out the number of subnets? An easy way to do it is to add the subnet with the host in a diagonal motion.<br/>
+<br/>
+<b>Calculate amount of subnets</b><br/>
+<img src="image 5.png" /><br/>
+<br/>
+If we say after multiples of 8, we add an extra 255 to the subnet address. &nbsp;So if the network is <i>wack 20</i>, it would have 16 hosts and a subnet of <b>255.255.240.0<br/>
+</b><b><br/>
+</b><img src="image 6.png" /><br/>
+<br/>
+<br/>
+<i>You should want to get comfortable with subnets because they will become very useful when working on larger-scale networks or when you want to separate your hosts for different functionalities.</i><br/>
+<br/>
+<br/>
+<b>Task</b><br/>
+<img src="image 7.png" /><br/>
+<br/>
+<b>REMEMBER !!</b><br/>
+<ul><li>To <b>use the cheat sheet shorctut method</b>&nbsp;to <i>quickly find out an IP's subnet</i></li>
+<li><b>Always minus 2</b>&nbsp;from <i>total number of hosts</i>&nbsp;when calculating the broadcast address</li>
+<li>Start both <b>hosts and subnets at 128</b>&nbsp;when using this shortcut method</li>
+<li>To find the subnet we <b>add the existing subnet to the next host</b>; <i>this will give you the value of the next subnet</i>.</li>
+<li>The <i>first address</i>&nbsp;is your <b>Network ID</b>&nbsp;and your <i>last address</i>&nbsp;is the <b>bradcast address</b>. &nbsp; <i>This can sometimes change so be aware</i></li>
+<li>Use sites like <b>https://ipaddressguide.com/cidr</b>&nbsp;to check if your IP address / subnet address / broadcast address / number of hosts &nbsp;is correct</li>
+<li>When people refer to the <i>network number</i>&nbsp;(eg network 24), you want to be able to <b>calculate how many hosts &amp; subnets it has quickly</b>.</li>
+</ul>
+</body></html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Installing &amp; Updating Tools</title>
+</head><body><b><u>Installing &amp; Updating Tools</u></b><br/>
+<br/>
+In this session we will go over how to install some files, by the end you will have the confidence and knowledge to install packages, update &amp; upgrade your Kali Linux.<br/>
+<br/>
+Firstly we will update &amp; upgrade our Linux.<br/>
+<br/>
+<tt>apt update &amp;&amp; apt upgrade<br/>
+<img src="image.png" /><br/>
+</tt><i>If you have a problem with the <tt>upgrade</tt>&nbsp;command, then you will need to try another method</i><br/>
+<tt><br/>
+</tt><i><b>If that doesn't run, please try the following:<br/>
+</b></i><br/>
+<tt>sudo apt update -y &amp;&amp; sudo apt upgrade -y<br/>
+<img src="image 2.png" /><br/>
+<br/>
+</tt>This will scan all the repositories in your machine and check if any files need to be updated. &nbsp;In the terminal it will display a list of packages that we can delete, install and upgrade. &nbsp;It will ask you to continue, click <tt>y</tt>&nbsp;and it will proceed to install the updates then any upgrades. &nbsp;<b>Be patient, as it can take a while</b><i>.</i>&nbsp; We will also delete the unused files by enteriung the following:<tt><br/>
+</tt><tt><br/>
+sudo apt autoremove -y<br/>
+</tt><img src="image 3.png" /><br/>
+<br/>
+<br/>
+<b>It is reccomended to update and upgrade your Kali Linux often.</b>&nbsp; Now that our machine is updated &amp; upgraded, we can start installing some packages. &nbsp;First, we will install the Python Pip package. &nbsp;This is a package needed in Python to install Python packages whcih we will need later in the course.<br/>
+<br/>
+I would like to stress that this is the industry standard to installing files, so this practice should be upheld regulary.<br/>
+<br/>
+<tt>apt install python3-pip<br/>
+</tt><img src="image 4.png" /><br/>
+<i>Installs pip so you can insatll Python packages.</i><br/>
+<br/>
+<br/>
+<b>Install A Package from GitHub</b><br/>
+Now we will install a package called pimpmykali from GitHub. &nbsp;This is a script that updates the latest version of kali Linux, getting rid of a lot of bugs and issues.<br/>
+<br/>
+First we navigate to GitHub to find the repo: <b>https://github.com/Dewalt-arch/pimpmykali</b>. &nbsp;Copy the link to <b>clone the repo</b>.<br/>
+<br/>
+Now open the terminal and switch the user to root.<br/>
+<br/>
+<tt>sudo su </tt><br/>
+<img src="image 5.png" /><br/>
+<br/>
+Navigate to the <tt>opt</tt>&nbsp;directory and <i>clone</i>&nbsp;the repo from GitHub. &nbsp;After downloading the cloned repo, now navigate to your <tt>pimpmykali</tt>&nbsp;directory.<br/>
+<br/>
+<img src="image 6.png" /><br/>
+<br/>
+Check the file for contents with<tt>&nbsp;ls -la</tt>. &nbsp;You should be able to locate the <tt>pimpmykali.sh</tt>&nbsp;file. &nbsp;This is the file we need to open.<br/>
+<br/>
+<img src="image 7.png" /><br/>
+<br/>
+To run the file enter<tt>./pimpmykali.sh</tt>&nbsp;then enter <tt>0</tt>&nbsp;when the file opens.<br/>
+<br/>
+<tt>./pimpmykali.sh</tt><br/>
+<img src="image 8.png" /><br/>
+<br/>
+<img src="image 9.png" /><br/>
+<i>Enter <tt>0</tt>&nbsp;to update your Linux<br/>
+</i><br/>
+If this is your first time using the the <tt>pimpmykali</tt>&nbsp;app then enter <tt>n</tt>&nbsp;to activate the new setup option. &nbsp;When that has completed you can enter the <tt>0</tt>&nbsp;option to update your machine.<br/>
+<br/>
+In the final stage of the set up select <tt>N</tt>&nbsp;when iot asks you if you want to install root.<br/>
+<br/>
+<img src="image 10.png" /><br/>
+<br/>
+With these quick steps you are able to install packages with apt and also clone &amp; install repositores from GitHub<br/>
+<br/>
+<br/>
+<b>Installing Gedit</b><br/>
+This is a simple <b>text editor</b>&nbsp;which you can use - like using <tt>nano</tt>. &nbsp;We will install this using the <tt>sudo</tt>&nbsp;command.<br/>
+<br/>
+<tt>sudo apt install gedit</tt><br/>
+<img src="image 11.png" /><br/>
+<br/>
+Similar to the nano command, to create a new file we first use the gedit command followed by the name of the new file we want to create.<br/>
+<br/>
+<tt>gedit newfile.txt</tt><br/>
+<img src="image 12.png" /><br/>
+<br/>
+<b>It is not compulsory to use it feel free to use what you feel comfortable with!</b></body></html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Common Network Commands</title>
+</head><body><b><u>Network Commands</u></b><br/>
+<br/>
+We will go through some of the common network commands that will be useful as a pen tester, then we will look at some of the more updated network commands,<br/>
+<br/>
+<tt>ifconfig<br/>
+</tt><img src="image.png" /><br/>
+Shows you the different interface types and the IP addresses asscoiated with them.<br/>
+<br/>
+<br/>
+<tt>iwconfig</tt>&nbsp;<br/>
+<img src="image 2.png" /><br/>
+<i>You will get wlan 0 or wlan 1 etc if a wireless adapter exists</i><br/>
+<br/>
+<br/>
+<tt>ping 192.168.254.129</tt><br/>
+<img src="image 3.png" /><br/>
+<i>This continuously sends a ping to the address given.</i><br/>
+<br/>
+The machine will <b>keep pinging the address</b>&nbsp;we want to communicate with. &nbsp;The address will send back a response to our manchine so in order to quit we would have to press <tt>ctrl+C</tt>. &nbsp;If we ping an address and do not get a response back, this could be because their machine might have an <b>ICMP blocking the pings</b>, or that the <b>address doesn't exist</b>.<br/>
+<br/>
+<img src="image 4.png" /><br/>
+No data is recieved because the address does not exist in my network.<br/>
+<br/>
+<br/>
+<tt>arp -a <br/>
+</tt><img src="image 5.png" /><br/>
+<i>Returns a list of IP addresses it communicates with and the MAC address associated with it</i><br/>
+<br/>
+<br/>
+<tt>netstat -ano <br/>
+</tt><img src="image 6.png" /><br/>
+<i>This shows you the active connections that are running on your machine. &nbsp;</i><br/>
+<br/>
+This is useful in a penetration test because you can check if the machine is talking to anyone else (a different port). &nbsp;If the target is active on a website we can get access to the port and use that as an exploit <br/>
+<br/>
+<br/>
+<tt>route</tt>&nbsp;<br/>
+<img src="image 7.png" /><br/>
+<i>Will print out the routing table; the table tells you where the traffic exits </i><br/>
+<br/>
+The <tt>route</tt>&nbsp;command is import because you might be ready to run you exploit on a target but didn't know the target was connected to <b>two networks</b>&nbsp;(this is possible with a <b>dual-homed NIC</b>). &nbsp;This could leave you with the possibiliyty of attacking one network, without knowing.<br/>
+<br/>
+We will also cover what <b>pivioting</b>&nbsp;is - <i>when you switch from network to another but you're using a machine</i>.<br/>
+<br/>
+<br/>
+<br/>
+<b><u>Updated Network Comamnds</u></b><br/>
+<br/>
+The <tt>ifconfig</tt>&nbsp;command is depricated and has been upgraded to the <tt>ip a</tt>&nbsp;command. &nbsp;It still works (for now) so you can use it, however the new command that is now becomming instrustry standard so you would be <b>expected to know it</b>&nbsp;as a pen tester. &nbsp;You will able to see that the new commands are also <b>colour coded</b>.<br/>
+<br/>
+<tt>ip a<br/>
+</tt><img src="image 8.png" /><br/>
+<i>Just the same as <tt>ifconfig</tt></i><br/>
+<br/>
+<br/>
+<tt>ip n</tt><br/>
+<img src="image 9.png" /><br/>
+<i>This is the same as the <tt>arp -a </tt>command</i>.<tt><i>&nbsp;n</i></tt><i>&nbsp;stands for neighbour</i><br/>
+<br/>
+<br/>
+<tt>ip r<br/>
+</tt><img src="image 10.png" /><br/>
+<i>This is the same as the <tt>route</tt>&nbsp;command</i><br/>
+</body></html>

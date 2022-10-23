@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>TCP, UDP &amp; 3-Way-Handshake</title>
+</head><body><b><u>TCP vs UDP Protocols<br/>
+</u></b><br/>
+TCP &amp; UDP are the <i>transport protocols</i>&nbsp;of the OSI Model using the <b>Layer 4 protocol</b>.<br/>
+<br/>
+<b>TCP - Transport Control Protocol</b><ul><li>Is a <i>connection orientated protocol</i></li>
+<li>Is best suited for <i>high reliability connections</i></li>
+<li>Websites using HTTP / HTTPS</li>
+<li>Using SSH / file sharing protocol</li>
+</ul>
+<br/>
+<b>UDP - User Datagram Protocol</b><ul><li>Suited for connectoinless protocols</li>
+<li>Streaming services</li>
+<li>Using DNS</li>
+<li>Voice over IP</li>
+</ul>
+<br/>
+<br/>
+<b><i>We use TCP &amp; UDP to scan as a penetration tester.</i></b><br/>
+TCP is the most common protocol used to scan for exploits.<br/>
+<br/>
+<br/>
+<b>3-Way Handshake</b><br/>
+The TCP protocol uses a method called the <b>3-Way Handshake</b>&nbsp;to communicate through <b>ports</b>&nbsp;<i>(which is an item that can be opened in a machine)</i>.<br/>
+If we were interacting with a HTTP website the port would be 80, if the website was HTTPS the port would be 443.<br/>
+<br/>
+How the 3-Way Handshake works:<br/>
+<i>synchronisation</i>&nbsp;<b>(SYN)</b>&#09;&gt; &#09;<i>synchronisation acknowledgment</i>&nbsp;<b>(SYN ACK)</b>&#09;&gt;&#09;<i>acknowledgement</i>&nbsp;<b>(ACK)</b><br/>
+<ul><li>Send a synchronisation packet to target</li>
+<li>The packet is recieved; target sends us back a synchronisation acknowledgment packet</li>
+<li>An acknowledgement packet is sent back to the target, allowing access.</li>
+</ul>
+<br/>
+<i>Example:</i><br/>
+<i>greet friend (SYN) &gt; friend greets you back (SYN ACK) &gt; you begin converstaion (ACK)</i><br/>
+<br/>
+<i>There are many different protocols with over 65,000 ports that can use them!<br/>
+<br/>
+</i><br/>
+<b>Using Wireshark</b><br/>
+Wireshark is used to capture packets. &nbsp;To do this it listens to the computer's <b>NIC</b>&nbsp;<b>(Network Interface Card)</b>&nbsp;to capture the data.<br/>
+This should be already installed in your Kali Linux, simply run in your terminal:<br/>
+<br/>
+<tt>wireshark&amp;</tt><br/>
+<img src="image.png" /><br/>
+<br/>
+This will cause another window to open which will be the Wireshark app.<br/>
+<img src="image 2.png" /><br/>
+<br/>
+<br/>
+To run a scan to capture packets we click the <b>Start capturing packets</b>&nbsp;button.<br/>
+<img src="image 3.png" /><br/>
+<br/>
+<br/>
+Now open your web browser then return back to the Wireshark app. &nbsp;You will now see all the socket data gathered between the web browser and my machine.<br/>
+<img src="image 4.png" /><br/>
+<br/>
+<br/>
+We can scroll through the logs and will find the 3-Way Handshake connection between the website and my machine.<br/>
+<br/>
+<b>Synchronisation SYN packet</b><br/>
+<img src="image 5.png" /><br/>
+<br/>
+<b>Synchronisation Acknowledgment SYN ACK packet</b><br/>
+<img src="image 6.png" /><br/>
+<br/>
+<b>Acknowledgment ACK packet<br/>
+</b><img src="image 7.png" /><br/>
+<br/>
+<br/>
+The terminal will also inform us when the capture has started and stopped.<br/>
+<img src="image 8.png" /><br/>
+<br/>
+<br/>
+<b>REMEMBER !!</b><br/>
+<ul><li>TCP is a <b>connection orientated protocol</b>, suited for high realiability connections</li>
+<li>UDP is a <b>connectionless protocol</b>.</li>
+<li>TCP uses the <b>3-Way Handshake</b>&nbsp;(SYN, SYN ACK, ACK packets)</li>
+<li>TCP &amp; UDP use<b>&nbsp;Layer 4 protocol</b></li>
+</ul>
+</body></html>

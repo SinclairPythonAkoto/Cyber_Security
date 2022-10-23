@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>File System</title>
+</head><body><b><u>Navigating the File System</u></b><br/>
+<br/>
+With previous Python &amp; software develpoing experience, you laready have some knowledge and experience using Linux.<br/>
+<i>Kali Linux</i>&nbsp;is just the same, so I will briefly go through some of the <b>Linux commands you are expected to know</b>&nbsp;as a pen tester.<br/>
+<br/>
+<b>pwd</b><br/>
+<img src="image.png" /><br/>
+Find out the <i>present working directory</i><br/>
+<br/>
+<b>cd ..</b><br/>
+<img src="image 2.png" /><br/>
+This takes you back one directory.<br/>
+<br/>
+<b>ls</b><br/>
+<img src="image 3.png" /><br/>
+This will present a <i>list of items</i>&nbsp;in the current directory.<br/>
+<br/>
+<b>cd Desktop/</b><br/>
+<img src="image 4.png" /><br/>
+This will <i>move</i>&nbsp;you from your current location to the directory provided.<br/>
+<br/>
+You can also navigate to folders located in other directories by using a backslash along with the directory. &nbsp;In this example we are viewing the contents of the <i>etc</i>&nbsp;folder <br/>
+while being in the <i>Desktop</i>&nbsp;directory.<br/>
+<br/>
+<b>ls /etc/</b><br/>
+<img src="image 5.png" /><br/>
+The command <i>ls</i>&nbsp;could be changed to a change directory or we can even create new files/sub-directories.<br/>
+<br/>
+<tt>mkdir new_folder</tt><br/>
+<img src="image 6.png" /><br/>
+This creates a new directory with the <i>make new directory</i>&nbsp;kewyword. <br/>
+<br/>
+<tt>rmdir new_folder</tt><br/>
+<img src="image 7.png" /><br/>
+Deletes a directory from location - <i>this has to be empty or it wont work</i><br/>
+<br/>
+<tt>ls -la </tt><br/>
+<img src="image 8.png" /><br/>
+Show hidden files<br/>
+<br/>
+<tt>touch new_folder/test.txt</tt><b><br/>
+</b><img src="image 9.png" /><br/>
+Creates a new file in the location in the chosen directory.<br/>
+<br/>
+<tt>rm -r new_folder</tt><b><br/>
+</b><img src="image 10.png" /><br/>
+This removes the folder and the contents in it.<br/>
+<br/>
+<tt>cp test.txt Downloads/ </tt><b><br/>
+</b><img src="image 11.png" /><br/>
+This will copy the file to the given directory. &nbsp;First we create a new file then when we check the location we can see our original file is there.<br/>
+Then when we check the contents of the Downloads folder we can find the copied file. <br/>
+<br/>
+<tt>cp test.txt test2.txt</tt><b><br/>
+</b><img src="image 12.png" /><br/>
+We can copy a file and change the name of the file. &nbsp;We can also do the same when we copy files to another directory. <br/>
+<br/>
+<tt>rm Downloads/test.txt</tt><b><br/>
+</b><img src="image 13.png" /><br/>
+This will delete the given file(s)s without having to change directory.<br/>
+<br/>
+<tt>mv test.txt Downloads/ </tt><b><br/>
+</b><img src="image 14.png" /><br/>
+This will move the file to the given folder<br/>
+<br/>
+<tt>locate bash</tt><b><br/>
+</b><img src="image 15.png" /><br/>
+This looks for all the files with the word bash in it, this isn't the best way to find a specific file if has a generic name. This is just a snippet of the full results.<br/>
+<br/>
+<tt>passwd</tt>&nbsp;<br/>
+<img src="image 17.png" /><br/>
+It will ask you for your current password then prompt you for a new password. &nbsp;The password will be updated once you press enter.<br/>
+<br/>
+<tt>man ls </tt><b><br/>
+</b><img src="image 16.png" /><br/>
+This give you an indepth information on the command. man can be used for loads of commands. &nbsp;<br/>
+<b>To quit / exit from the manual you press the q key.</b><br/>
+<i>(This is just a snippet)<br/>
+<br/>
+<br/>
+</i><b>REMEMBER !!</b><i><br/>
+</i><ul><li>Get used to making these commands in from the <b>terminal</b></li>
+</ul>
+<ul>There are<b>&nbsp;more commands to learn</b>.. should update this as my progress increases.</ul>
+<br/>
+</body></html>

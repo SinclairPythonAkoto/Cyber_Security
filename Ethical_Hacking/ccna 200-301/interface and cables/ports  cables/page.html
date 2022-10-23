@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Ports &amp; Cables</title>
+</head><body><b><u>Interface and Cables</u></b><br/>
+<br/>
+In this section we will cover interfaces &amp; cables and how they work when conencted to network devices.<br/>
+<br/>
+<i>Wireless connections are also a part of networking which we will go through later in thr course.</i><br/>
+<br/>
+To begin with, we will look at the interface of a <b>switch</b>&nbsp;(remember a switch has 24+ ports for end hosts to connect to).<br/>
+<img src="image.png" /><br/>
+<i>We will define these tags to understand what they do</i><br/>
+<br/>
+Take a look at the shape of the the interface, your computer uses this to connect to a wired network. This port is known as a <b>RJ-45 (Registered Jack)</b>.<br/>
+<img src="image 2.png" /><br/>
+<i>RJ-45 ports</i><br/>
+<br/>
+<img src="image 3.png" /><br/>
+<i>RJ-45 </i>connectors<br/>
+<br/>
+The RJ-45 is used on the end of a <b>copper-Ethernet cable</b>. <i>There are other Ethernet cables that do </i><b>not</b><i>&nbsp;use copper wiring which we will discuss later</i>.<br/>
+<br/>
+<br/>
+<b>Ethernet</b><br/>
+Ethernet is a collection of network protocols &amp; standards. &nbsp;Because of this, Ethernet is not defined by one singluar protocol or standard. &nbsp;For the CCNA course, we will look at the types of cables defined by Ethernet standards.<br/>
+<img src="image 4.png" /><br/>
+<br/>
+Using network standards protocols help other computers communicate because by using the same protocol/standard then the computers can communicate and understand eachother even if they are using different languages / configuration / devices, etc.<br/>
+<img src="image 5.png" /><br/>
+The two can communicate and understand each other using Ethernet protocols/standards<br/>
+<br/>
+The hardware for Ethernet cables arre set to a universal standard, so you would not be able to apply it an uncompatable device.<br/>
+<img src="image 6.png" /><br/>
+<i>The RJ-45 will not be able to fit in the USB slot</i><br/>
+<br/>
+Manufacturers apply the universal standards to the hardware (ports, cables, connectors, etc), just how standards are applied to network IP addresses - different types of end hosts stick to the same networking rules.<br/>
+<br/>
+<br/>
+<b>Bits and Bytes </b><br/>
+Connections between devices in a network <i>operate at a set speed</i>. &nbsp;The speed is measured in <b>bits per second (Bps)</b>.<br/>
+<i>So what is a bit?</i>&nbsp; It is a <b>binary digit</b>&nbsp;represented by a 0 or 1. &nbsp;Computers, websites, operating systems, etc all work off from <b>binary code</b>. &nbsp;8x bits make up <b>1x byte</b>. <br/>
+<img src="image 7.png" /><br/>
+<br/>
+As mentioned before, bits are measured in <b>bits per second</b>. &nbsp;This is because when traffic/data is being sent across a network, it is sent across <b>one bit at a time</b>, <i>not one byte at a time</i>.<br/>
+<img src="image 8.png" /><br/>
+<i>Traffic being sent across two routers<br/>
+<br/>
+</i><img src="image 9.png" /><br/>
+<i>Simple illustration of different network speeds.</i><br/>
+<br/>
+Also remember <b>data on a hard drive is measured in bytes</b>.<br/>
+<br/>
+<br/>
+<b>Ethernet Standards</b><br/>
+Ethernet Standards are defined in the <b>IEEE (Institute of Electrical and Electronics Engineers)</b>&nbsp;<b>802.3</b>&nbsp;standard in 1983.<br/>
+<img src="image 10.png" /><br/>
+<i>If you see this image you will know that it will come with the ethernet standards</i><br/>
+<br/>
+We will look at the Ethenet standards for <b>copper cables</b>&nbsp;as well as fiber<b>&nbsp;optic caples</b>.<br/>
+<img src="image 11.png" /><br/>
+<i>Study and understad the table. <tt>BASE</tt>&nbsp;= baseband signaling, <tt>T</tt>&nbsp;= twsited pair (cables)</i><br/>
+<br/>
+We will look more into the physical cables and how they work.<br/>
+<br/>
+<br/>
+<b>UTP Cables<br/>
+</b><b>UTP</b>&nbsp;<b>(Unshielded Twisted Pair)</b>&nbsp;cables are cables used to comply with Ethernet standards. &nbsp;They also protect against <b>EMI (Electromagnetic Interference)</b>.<br/>
+<img src="image 12.png" /><br/>
+<i>We should note not all Ethernet standards use 8x wires </i><br/>
+<ul><li><b>Unshielded</b>&nbsp;means they have no metalic sheild. &nbsp;This can make them vulnerable to electrical interference.</li>
+<li>The <b>twisted</b>&nbsp;wires helps prevent electrical interference.</li>
+<li>The wires are twsited in <b>pairs</b>; in this picture there are <i>4x pairs, meaning 8x cables</i>.</li>
+</ul>
+<br/>
+If we study the picture below we can see the different UTP cables use different amount of wires.<br/>
+<img src="image 13.png" /><br/>
+<i>We will look deeper into 10BASE-T &amp; 100BASE-T cables.</i><br/>
+<br/>
+<br/>
+<b>Full-Duplex</b><br/>
+We will look at the connectivity between an <i>end host</i>&nbsp;and a <i>switch</i>. &nbsp;Imagine a scenario where we are <b>connecting a PC to a switch</b>&nbsp;with <b>10BASE-T</b>&nbsp;or <b>100BASE-T cables</b>. &nbsp;The numbers in the diagram represent the pins on the <b>RJ-45 connector</b>.<br/>
+<img src="image 14.png" /><br/>
+<i>The lines are straight but the wires would be twisted togteher in the physical hardware</i><br/>
+<br/>
+The <i>PCs (end host)</i>&nbsp;will <b>transmit</b>&nbsp;data through <b>pins 1 &amp; 2</b>, and the <i>switch</i>&nbsp;interface will recieve the data through <b>pins 1 &amp; 2</b>.<br/>
+On the switch, <b>pins 3 &amp; 6</b>&nbsp;are used to <b>transmit</b>&nbsp;the data, while the <i>end host</i>&nbsp;<b>recieves</b>&nbsp;the data through <b>pins 3 &amp; 6</b>.<br/>
+<br/>
+This is a <b>Full-Duplex</b>&nbsp;transmission because <b>both devices can send &amp; recieve data</b>&nbsp;at the same time <i>without any data colliosions</i>. &nbsp;<i>This is achieved by using <b>seperate</b>&nbsp;<b>wires</b></i>.<br/>
+<br/>
+<br/>
+<b>Straight-through </b><br/>
+We will now look at the connectivity between a <i>router</i>&nbsp;and a <i>switch</i>, using <b>10BASE-T or 100BASE-T</b>&nbsp;<b>cables</b>.<br/>
+<img src="image 16.png" /><br/>
+<i>This also uses a Full-Duplex transmission</i><br/>
+<br/>
+A <u><i>router</i></u>&nbsp;<b>transmits</b>&nbsp;data on <b>pins 1 &amp; 2</b>, and <b>recieves</b>&nbsp;data through <b>pins 3 &amp; 6</b>.<br/>
+The <u><i>switch</i></u>&nbsp;<b>recieves</b>&nbsp;data on <b>pins 1 &amp; 2</b>, and <b>transmits</b>&nbsp;data through <b>3 &amp; 6</b>.<br/>
+<br/>
+These are also called <b>straight-through cables</b>&nbsp;because the <b>pins are connected to their matching numbers</b>&nbsp;<i>(pin 1 connects to pin 1, pin 2 connects to pin 2, etc)</i>.<br/>
+<br/>
+<br/>
+<b>Crossover cable</b><br/>
+Sometimes we may want to connect two of the same type of &nbsp;network nodes together (ie, two switches, two PCs, etc).<br/>
+We will look at how we can connect <i>two switches that are the same</i>, using <b>10BASE-T or 100BASE-T cables</b>.<br/>
+<br/>
+If we try to use the <i>Full-Duplex</i>&nbsp;method, we can see that we cannot transmit data because <b>pins 3 &amp; 6 are not set up to recieve data</b>&nbsp;on a switch (and also the reciever pins are incorrectly set up).<br/>
+<img src="image 15.png" /><br/>
+<i>The cables cannot send / recieve data this way</i><br/>
+<br/>
+To fix this we connect the pins to their <b>opposite</b>&nbsp;<i>counterparts on the other side</i>. &nbsp;<br/>
+<img src="image 17.png" /><br/>
+<i>You can also connect a router to a end host using crossover cables and it would still work as normal.</i><br/>
+<br/>
+<b>Pins 1 &amp; 2 on the left will connect to pins 3 &amp; 6 on the right, pins &nbsp;3 &amp; 6 will connect to 1 &amp; 2</b><br/>
+<br/>
+The wires are <i>crossed over each other</i>&nbsp;- hence the name <b>Crossover cable</b>. &nbsp;The transmit pins on one side is connected to the recive pins on the oethr side. &nbsp;<br/>
+<br/>
+Study the table below to grasp the different device types and the <b>different pins the cables use</b>.<br/>
+<img src="image 18.png" /><br/>
+<br/>
+<br/>
+<b>Auto MDI-X</b><br/>
+This <b>automatically</b>&nbsp;<b>detects</b>&nbsp;<b>which pin</b>&nbsp;the transmitting data is coming from, and then <b>adjust to their pins</b>&nbsp;to recieve &nbsp;&amp; transmit the data.<br/>
+<img src="image 19.png" /><br/>
+<i>More modern cables have this but is still good practice to know the straight-throu gh cables and crossover cables.</i><br/>
+<br/>
+<i>Take that if an Auto MDI-X is connected to an <b>old network node</b>&nbsp;then the auto detect function will <b>not work</b>.</i><br/>
+<br/>
+<br/>
+<b>1000BASE-T or 10GBASE-T cables</b><br/>
+Now we will cover the 1000BASE-T or 10GBASE-T cables; they have two main differences - they use all 8x wires and they are bidrectional (each pair can send &amp; recieve data).<br/>
+<img src="image 20.png" /><br/>
+<i>This is the reason why they operate at much higher speeds.</i><br/>
+<br/>
+<br/>
+<b>Fiber-Optic Connections<br/>
+</b><img src="image 21.png" /><br/>
+Fiber-Optic ports are highlighted in red, UTP ports are in yellow<br/>
+<br/>
+<i>UTP</i>&nbsp;cables can only stretch as far as 100 meters whereas <b>fiber-optic cables</b>&nbsp;can strech far longer. &nbsp;We plug in a <b>SFP (Small Form-Factor Pluggable)</b>&nbsp;Transciever into the fiber-optic port in order to use the fiber optic cables.<br/>
+<img src="image 22.png" /><br/>
+<i>We plug the SFP into the fiber-optic port</i><br/>
+<br/>
+<img src="image 23.png" /><b><br/>
+</b><i>Fiber-optic cables</i><br/>
+<br/>
+Instead of sending an electrical signal through copper wiring, they send <b>light over glass fibers</b>. &nbsp;<br/>
+<br/>
+<img src="image 24.png" /><br/>
+<i>On each end of the cable there are 2x connectors to enable the capability to recieve &amp; send data.</i><br/>
+<br/>
+Let's take a look at the <b>structure of a fiber optics cable</b>.<br/>
+<img src="image 25.png" /><br/>
+<ul><li>The <b>fiberglass core</b>: <i>light is transmitted down the core to transmit one device to another</i></li>
+<li><b>Cladding</b>&nbsp;<i>reflects light</i></li>
+<li><b>Protective buffer</b>&nbsp;: <i>protects the fiberglass from breaking </i></li>
+<li><b>Outer</b>&nbsp;<b>jacket</b>&nbsp;<i>protects against the elements</i></li>
+</ul>
+<br/>
+There are two main types of fiberglass cables - single-mode fiber &amp; multi-mode fiber cables.<br/>
+<br/>
+<br/>
+<b>Multi-Mode Fiber Cables </b><br/>
+<div style="text-align: justify">Here are two examples of a multi-mode fiber cables.<br/>
+<img src="image 26.png" /><br/>
+<i>Study the bullet points</i><br/>
+<br/>
+</div><div style="text-align: justify">The <i>centre</i>&nbsp;represents the <b>fiberglass core</b>&nbsp;and the <i>blue</i>&nbsp;represents the <b>cladding</b>&nbsp;that reflects the light inside the cable</div><br/>
+Notice the <b>black &amp; red lines</b>; this represents the <b>lightwaves travelling down the fiberglass core</b>, <i>reflecting off the cladding at different angles</i>.<br/>
+<br/>
+<br/>
+<b>Single-Mode fiber Cables</b><br/>
+Here is an example of a single mode fiber cable compared against two milti-mode fiber cables.<br/>
+<img src="image 27.png" /><br/>
+<div style="text-align: justify"><i>The centre represents the fiberglass core and the blue represents the cladding that reflect the light inside the cable.</i><br/>
+<br/>
+You can see the <b>core of a</b>&nbsp;<b>single-mode fiber cable is much smaller</b>&nbsp;than a multi-mode fiber cable.<br/>
+<br/>
+Because <i>the light enters at a single angle</i>&nbsp;(known as a <b>mode</b>) from a laser transmitter, the <b>light travels in a stright line</b>&nbsp;down the core of the cable<br/>
+<br/>
+<br/>
+<b>Fiber-Optic cable Standards</b><br/>
+Here is a table of the fiber-optic cable standards.<br/>
+<img src="image 28.png" /><br/>
+<i>This is just a sample of the standards, there are many more.</i><br/>
+</div><br/>
+<br/>
+<b>UTP vs Fiber-Optic</b><br/>
+We can compare the difference between UTP cables and fiber-optic cables<br/>
+<img src="image 29.png" /><br/>
+<i>Because UTP leaks a faint signal, this can be breached to copy data from the netowork.</i><br/>
+<br/>
+<br/>
+<br/>
+<b>REMEMBER !!</b><br/>
+<ul><li><b>Ports</b>&nbsp;are also known as <b>interfaces</b></li>
+<li><b>Speed</b>&nbsp;is measured in <b>bits per second</b>&nbsp;(Bps, Kbs, Mbs, Gbs, etc)</li>
+<li>Data is sent <b>one bit at a time</b>, in <i>binary digits - 8x bits amounting to 1x byte to create a 0 or 1.</i></li>
+<li>UTP cables are used in <b>Ethernet standards. </b>&nbsp;They are the standard for <b>wired connections to switches</b>.</li>
+<li><b>Full-Duplex</b>&nbsp;transmission allows network nodes to <b>send and recive data at the same time</b></li>
+<li>Connectivity between an end host to a switch and a router to a switch are the same. &nbsp;<b>Pins 1 &amp; 2 transmit while pins 3 &amp; 6 recieve.</b></li>
+<li><b>Stright-through</b>&nbsp;cable are <b>pins that connect to the same number</b>.</li>
+<li><b>Crossover</b>&nbsp;cables do not connect the pins to the same number but rather their opposites. &nbsp;The transmission on one side will connect to the reciever on the other side</li>
+<li><b>Auto MDI-X</b>&nbsp;will detect which pin the data is coming from then <b>adjusts its pin accordingly to recieve and send the data</b>.</li>
+<li>Fiber-Optic cables have a <b>longer distance</b>&nbsp;than UTP cables and are protected against <b>EMI</b>.</li>
+<li>UTP does <b>not</b>&nbsp;support for distances over 100m.</li>
+<li>The SFP ports for the fiber-optic cables are <b>more expensive</b>&nbsp;than RJ45 ports,</li>
+</ul>
+</body></html>

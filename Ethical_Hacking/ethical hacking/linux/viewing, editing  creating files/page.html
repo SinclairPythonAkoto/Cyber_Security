@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Viewing, Editing &amp; Creating files</title>
+</head><body><b><u>Viewing, Editing &amp; Creating Files</u></b><br/>
+<br/>
+In this sesction we will have a quick overview of how to create a new file in your terminal, view the files and update them.<br/>
+<br/>
+As mentioned before we can use <tt>touch</tt>&nbsp;to create a new file.<br/>
+<br/>
+<tt>touch file1.txt<br/>
+</tt><img src="image.png" /><br/>
+<br/>
+<br/>
+We can also use the echo command to create a file.<br/>
+<br/>
+<tt>echo "hello world" &gt; hello.txt<br/>
+</tt><img src="image 2.png" /><br/>
+<br/>
+<br/>
+We can view the contents of a file by using the <tt>cat</tt>&nbsp;command. &nbsp;We will use cat to view the contents of <tt>hello.txt</tt><br/>
+<tt><br/>
+cat hello.txt<br/>
+</tt><img src="image 3.png" /><br/>
+<i>We can navigate to different directories and view fles from any destination</i><br/>
+<br/>
+<br/>
+With the echo command we can also print text to the terminal <br/>
+<tt>echo "my name is Sinclair"<br/>
+</tt><img src="image 4.png" /><br/>
+<br/>
+<br/>
+We can also append data to an existing file with <tt>echo</tt>&nbsp;by using method as creating a new file but instead with <b>2x<tt>&nbsp;&gt;</tt></b><tt>&nbsp;</tt>signs instead of one.<br/>
+<br/>
+<tt>echo "this is new line" &gt;&gt; hello.txt<br/>
+</tt><img src="image 5.png" /><tt><br/>
+</tt><i>This adds the data in a new line</i><br/>
+<br/>
+We have to be aware that if we <b>forget</b>&nbsp;to use<tt>&nbsp;&gt;&gt; </tt>when <b>appending/updating</b>&nbsp;a file we will <b>overwrite</b>&nbsp;the file instead.<br/>
+The cat method has a practical use as a pen tester because it allows it to create and update existing files for our exploits within the terminal (like creating a list of IP addresses).<br/>
+<br/>
+<tt>nano</tt>&nbsp;is Kali Linux's <b>built in text editor</b>&nbsp;in the terminal that we can use to create, view and edit files.<br/>
+If we check file1.txt with cat you can see it's empty because nothing appears in the terminal. &nbsp;So let's enter the file by using nano so we can update it.<br/>
+<br/>
+<tt>nano file1.txt<br/>
+</tt><img src="image 6.png" /><br/>
+<i>A text editing GUI will appear where you can write your scripts / text</i><br/>
+<br/>
+<img src="image 7.png" /><br/>
+<tt>ctrl+X</tt>&nbsp;to exit the text editor<br/>
+<br/>
+<img src="image 8.png" /><br/>
+<i>Press <tt>Y</tt>&nbsp;to save and exit.</i><br/>
+<br/>
+<img src="image 9.png" /><br/>
+<i>Press <tt>enter</tt>&nbsp;to save or you have the option to chnage the file name. &nbsp;</i><br/>
+<br/>
+If you choose to chnage the file name, a new file will be created and the original will be left untouched. &nbsp;If we now view <tt>file1.txt</tt>&nbsp;we will be able to see our changes.<br/>
+<br/>
+<img src="image 10.png" /><br/>
+<i>The new updates are now visible </i><br/>
+<br/>
+<br/>
+You also have other text editors like VS Code or Gedit from the previous one. &nbsp;One thing to remember when you are accessing a target's machine, most likely you won't have access to a GUI like VS Code or Gedit so you would have to ue the terminal like <tt>nano</tt>, <tt>vi</tt>&nbsp;or <tt>vim</tt>.<br/>
+</body></html>

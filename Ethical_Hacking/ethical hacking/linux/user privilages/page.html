@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>User Privilages</title>
+</head><body><b><u>Users &amp; Priviledges</u></b><br/>
+<br/>
+When we enter commands like <tt>ls -la</tt>&nbsp;from the terminal we can recieve extra data on our files and directories. &nbsp;We will break down how to read some of this data, look at how to create new users and the different privilledges between them.<br/>
+<br/>
+<tt>ls -a</tt><br/>
+<img src="image.png" /><br/>
+This tells us what type of data the files are and what permissions come with them.<br/>
+<br/>
+<i>Lets look at what the chacaters mean</i>&nbsp;- this will help us determine how we will approach files and directories in the furture.<br/>
+<br/>
+<img src="image 2.png" /><br/>
+<i><tt>d</tt>&nbsp;means its a directory. &nbsp;In our example <tt>d</tt>&nbsp;is the <tt>Desktop</tt>&nbsp;directory</i><br/>
+<br/>
+<img src="image 3.png" /><br/>
+<i><tt>- </tt>means its a file. &nbsp;In our example<tt>&nbsp;- </tt>is the <tt>.dmrc</tt>&nbsp;file</i><br/>
+<br/>
+<img src="image 7.png" /><br/>
+<i><tt>r</tt>&nbsp;means read<br/>
+</i><br/>
+<img src="image 8.png" /><br/>
+<i><tt>w</tt>&nbsp;means write<br/>
+</i><br/>
+<img src="image 9.png" /><br/>
+<tt><i>x</i></tt><i>&nbsp;means execute </i><br/>
+<br/>
+<br/>
+The next <b>9x characters</b>&nbsp;are split into <b>3x category groups</b>&nbsp;(3x characters each). Each category is assigned a <b>different set of permissions</b>&nbsp;for that <i>singular file/directory</i>. &nbsp;<b>Please note that not all files will have the same permissions!</b><br/>
+<ul><li style="list-style-type: none"><b>1st Group Permissions</b></li>
+<i><li style="list-style-type: none">Belongs to the owner of the file.</li>
+</i><li style="list-style-type: none"><img src="image 4.png" /></li>
+<li style="list-style-type: none"><i>The user can read, write and execute as a user in the <tt>Desktop</tt>&nbsp;folder.</i></li>
+<li style="list-style-type: none"></li>
+<li style="list-style-type: none"><b>2nd Group Permissions</b></li>
+<i><li style="list-style-type: none">Is the group ownership of the file. &nbsp;So if there are any other users with access, they will have whatever permissions available to them.</li>
+</i><li style="list-style-type: none"><img src="image 5.png" /></li>
+<li style="list-style-type: none"><i>Any other user with grouped access to this <tt>Desktop</tt>&nbsp;folder can read and execute (but cannot create files)</i></li>
+<li style="list-style-type: none"></li>
+<li style="list-style-type: none"><b>3rd Group Permissions </b></li>
+<i><li style="list-style-type: none">Refer to all the other users (common users)</li>
+</i><li style="list-style-type: none"><img src="image 6.png" /></li>
+<li style="list-style-type: none"><i>Common users can have access to the <tt>Desktop</tt>&nbsp;to view &amp; execute files (but cannot create any)</i></li>
+</ul>
+<br/>
+These categories come into play when we are pen testing because<b>&nbsp;you will be looking for files to expose</b>&nbsp;to run your expolits. &nbsp;<b>With full access it is easier for you to run your scripts / exploits.</b>&nbsp; Sometimes we may to access a file with full access and then modify it in order to run our exploits.<br/>
+<br/>
+<br/>
+<b>Create a new file then change the mode</b><br/>
+When we create a file, we will want to run it but it won't be executable. &nbsp;This wouldn't be possible unless we had some access so to do this we would have to <b>change the mode</b>&nbsp;of the file. &nbsp;We do this by entering <tt>chmod</tt>&nbsp;followed by the file you wish you change.<br/>
+<b><br/>
+</b><img src="image 10.png" /><br/>
+<i>We can see <tt>newfile.txt</tt>&nbsp;doesnt have full access in all 3x groups</i><br/>
+<br/>
+<tt>chmod -x newfile.txt</tt><br/>
+<img src="image 11.png" /><br/>
+The permissions in the groups have now changed along with the font colour of the file.<br/>
+<br/>
+We can use <b>more commands</b>&nbsp;with the <tt>chmod</tt>&nbsp;keyword. &nbsp;We have <b>additional options:</b>&nbsp;<i><tt>r</tt>&nbsp;(read), <tt>w</tt>&nbsp;(write) &amp; <tt>x</tt>&nbsp;(execute)</i>&nbsp;that we can use such as <tt>-rx </tt>or <i>other combinations</i>.<br/>
+<br/>
+As you can see from the image above, <b>not all</b>&nbsp;permissions have been granted to this file (even after doing -rwx). &nbsp;<i>So you need to be careful and double check when applying this method.</i><br/>
+<br/>
+<i>Another method</i>&nbsp;is to use <tt>chmod</tt>&nbsp;<tt>777</tt>. &nbsp;This automatically sets the file to <b>full access</b>.<ul><li style="list-style-type: none"></li>
+</ul>
+<tt>chmod 777 newfile.txt</tt><br/>
+<img src="image 12.png" /><br/>
+<i>Now the file has full access</i><br/>
+<br/>
+<b><i>Changing the mode is one of the important aspects of pen testing because we will be doing this a lot to run our scripts! <br/>
+</i></b><br/>
+<i>I prefer using the <tt><b>chmod 777</b></tt>&nbsp;method because its easier and it will give you the full access automatically.</i><br/>
+<br/>
+<br/>
+<b>Adding New Users</b><br/>
+<tt>sudo adduser john<br/>
+</tt><img src="image 13.png" /><br/>
+<i>This creates a new user </i><br/>
+<br/>
+You will be prompted for your <i>current user's password</i>, then to create your <b>new user's password</b>. &nbsp;Once that's done you have created a new user! &nbsp;We can check if the new user has been created properly by doing a cat on /etc/passwd file.<br/>
+<br/>
+<tt>cat /etc/passwd<br/>
+</tt><img src="image 14.png" /><br/>
+<img src="image 15.png" /><br/>
+<i>The new user is located at the bottom of the file</i><br/>
+<br/>
+The <tt>passwd</tt>&nbsp;file used to house all the <i>user passwords</i>&nbsp;in the <b>older</b>&nbsp;distros of Linux, but now the passwords are located in the <tt>/etc/shadow</tt>&nbsp;file. &nbsp;Although the passoword file no longer contain the passwords, it <b>still holds information</b>&nbsp;about the users which<b>&nbsp;you maybe able to find an exploit from</b>. &nbsp;<br/>
+<br/>
+The <tt>/etc/shadow</tt>&nbsp;file contains the user <i>passwords</i>&nbsp;in a <b>hashed format</b>. &nbsp;With apps such as <b>Hashcat</b>&nbsp;we can <i>crack into the user passwords</i>&nbsp;(if the passwords are weak or my abilities are stronger than the security measures).<br/>
+<br/>
+The <tt>/etc/passwrd</tt>&nbsp;file will become your friend because that will be <i>used a lot throughout your pen testing experience</i>. &nbsp;If you have access to a <tt>/etc/shadow</tt>&nbsp;file then you have a <b>strong possibility</b>&nbsp;of being able to break the encrypted password.<br/>
+<br/>
+<b>Switching Users</b><br/>
+To <b>switch</b>&nbsp;to the new user you enter <tt>su</tt>&nbsp;then followed by the <b>new user name</b>. <tt>su</tt>&nbsp;is short for <b>switch user</b>.<br/>
+<br/>
+<tt>su john<br/>
+</tt><img src="image 16.png" /><br/>
+<i>Now you have switched to <tt>john</tt>&nbsp;as a user after enetring password</i><br/>
+<br/>
+<br/>
+If you are <b>not</b>&nbsp;a root user, you will <i>have to get permissions to be able to do certain things</i>. &nbsp;We have to remember when we create a new user <b>it doesn't come with the same root permissions</b>. &nbsp;If we're using the <tt>john</tt>&nbsp;as a user, and we want to change the root's password, we would be <b>denied access</b>&nbsp;<i>even if we use</i>&nbsp;<tt>sudo</tt>&nbsp;because the user <tt>john</tt>&nbsp;user is not listed in the <b>Sudoers file</b>. &nbsp;<br/>
+<br/>
+If the user is <b>not</b>&nbsp;in the <i>Sudoers file</i>&nbsp;they will <b>not gain full access</b>&nbsp;<i>even if they use the sudo command</i>. &nbsp;However, if the user <b>is</b>&nbsp;in the file then <b>they will have full access</b>.<br/>
+<br/>
+<br/>
+<b>REMEMBER!!</b><br/>
+<ul><li>A new user has base permissions (no full access) until listed in the Sudoers file</li>
+</ul>
+</body></html>
