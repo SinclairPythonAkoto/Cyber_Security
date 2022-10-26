@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Burp Suite</title>
+</head><body><b><u>Burp Suite</u></b><br/>
+<br/>
+Burp Suite is a <b>web proxy</b>&nbsp;that intercepts traffic. &nbsp;It is a built in tool that you can find in Kali Lunix.<br/>
+<br/>
+Open the app and click on<b>&nbsp;Tempory Project</b>&nbsp;then <b>Next</b>.<br/>
+<br/>
+Now we need to set up the Firefox in Kali to be able to use the Burp Suite.<br/>
+<br/>
+Click on the <b>hanburger</b>&nbsp;<b>sign</b>&nbsp;then <b>Preferences</b>.<br/>
+<br/>
+Scroll to the bottom to find <b>Settings</b>&nbsp;in the <b>Network Proxys</b>.<br/>
+<br/>
+Select<b>&nbsp;Manual Proxy Configuration</b>&nbsp;and make sure the <b>HTTP Proxy</b>&nbsp;is set to <tt>127.0.0.1</tt>&nbsp;and the <b>Port</b>&nbsp;is set to <tt>8080</tt>. &nbsp;Before saving and exiting, make sure you check the box <b>Use this proxy for all protocols</b>.<br/>
+<br/>
+Go to <tt>https.burp</tt>, click on the <b>CA Certificate</b>&nbsp;to download and save the file.<br/>
+<br/>
+Now go back to the Firefox settings and navigate to the <b>Certificates in Privacy &amp; Security</b>. &nbsp;Click on <b>View Certificates</b>&nbsp;and import the certificate you just downloaded.<br/>
+<br/>
+Select <i>both check boxes</i>&nbsp;then the <b>OK</b>&nbsp;button. &nbsp;After these steps it should be now ready to use.<br/>
+<br/>
+<br/>
+Burp Suite is a good tool because it allows you to seach websites and get a lot of information from the pages etc. &nbsp;This is still classed as <b>passive</b>&nbsp;<b>reconnasissance</b>.<br/>
+<br/>
+<b>The Burp Suite has a built in web browser so the steps above are no longer needed.</b><br/>
+<ul><li>Open the Burp Suite app and open a new dashboard</li>
+<li>Click on Proxy.</li>
+<li>If you want to browse throuhg a website leave Intercept is off</li>
+<li>If you want to look at the backend of pages, switch Intercept on, then refresh the page </li>
+</ul>
+</body></html>

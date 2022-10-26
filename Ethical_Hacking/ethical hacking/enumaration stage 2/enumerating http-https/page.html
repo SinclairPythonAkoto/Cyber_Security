@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Enumerating HTTP/HTTPS</title>
+</head><body><b><u>Enumerating HTTP / HTTPS</u></b><br/>
+<br/>
+Continuing from the previous session, we will break downthe results of the <tt>nmap</tt>&nbsp;and see what information maybe value to us.<br/>
+<br/>
+<img src="image.png" /><br/>
+<i><tt>nmap</tt>&nbsp;results</i><br/>
+<ul><li>ports like <b>80, 443, 139</b>&nbsp;are ports we would like to use for exploits (http, https &amp; smb).</li>
+<li>ports like <b>22</b>&nbsp;are pretty strongly secured you can use brute force to gain entry but it will take a lot tof time &amp; computational effort.</li>
+</ul>
+<br/>
+Before we begin the enumeration, we want to create a folder of the project so we can build notes to use for our exploits and our report. &nbsp;<i>We want to make a report to get used to showing all the vulnerablilities so we get used to doing it for our clients in the real world</i>.<br/>
+<br/>
+<b>Burp Suite</b><br/>
+Now we will use <b>Burp Suite</b>&nbsp;to check if the website exists. &nbsp;We have the IP address of the Kioptrix machine so we can enter it in the into the app to see what type of response we get.<br/>
+<br/>
+Please follow these steps when the Burp dashboard is open.<br/>
+<br/>
+<img src="image 2.png" /><br/>
+<br/>
+Select the <b>Proxy</b>&nbsp;tab then make sure the <b>Intercept is o</b>n is switched off. &nbsp;By default it is switched off so turn it off.<br/>
+Then click on the Open browser tab. &nbsp;A new Burp Suite webpage window will appear. &nbsp;This is where you can test your IP addresses / websites to draw more information from.<br/>
+<br/>
+Once the browser is open we can enter Kioptrix's IP address to see what we get. &nbsp;<b>These are the things we want to observe and think about</b>:<ul><li>Running on Apache</li>
+<li>Its running RedHat Linux</li>
+<li>If a client is is running a default webpage, are there any other directories like this?</li>
+<li>Are they hosting a website somewhere else just not at our IP address?</li>
+<li>Have they just got port 80 &amp; 443 open for no reason? etc</li>
+</ul>
+<br/>
+We can browse the webpage, click on the links to see what we get.<br/>
+<br/>
+<b>Target webpage</b><br/>
+<img src="image 3.png" /><br/>
+<br/>
+When we click on the <tt>documentation</tt>&nbsp;link we are taken to an unresponsive page. &nbsp;This is still valuable to use becasue it tells us the version Apache is running. &nbsp;This is another example of<b>&nbsp;informaiton disclosure</b>&nbsp;- where internal information is made public. &nbsp;<i>The information by itself is not damaging but when put together along with other bits of information we find makes it easier for us to find an exploit</i>.<br/>
+<br/>
+<br/>
+<b>Nikto</b><br/>
+Nikto is a built in <b>web vulnerablility scanner</b>. &nbsp;This allows you to do vulnerablility scanning against a website; but if the website has a good firewall or security then your search will be blocked.<br/>
+<br/>
+<tt>nikto -h http://192.168.254.130<br/>
+</tt><img src="image 4.png" /><br/>
+<i><tt>-h</tt>&nbsp;refers to host</i><br/>
+<br/>
+This is a really good tool because you can get a list of all the different vulnerablilties and well as information about the site that you didn't know.<ul><li>We can see the Apache version number - and that it is outdated</li>
+<li>We know the language is PHP</li>
+<li>Possible code execution</li>
+<li>vulnerable to a buffer overflow and rewrite</li>
+<li>vulnerable to remote overflow and access to remote shell.</li>
+</ul>
+<br/>
+The scanner also applies a word-list to the site. &nbsp;It tries to find if there are any directories by throwing random words at it. &nbsp;Any matching results are then returned - this is called <b>directory busting</b>.<br/>
+&nbsp;<br/>
+<img src="image 5.png" /><br/>
+<i>nikto finds directories associated with the website</i><br/>
+<br/>
+<img src="image 6.png" /><br/>
+<i>Copy this into our notes</i><br/>
+<br/>
+You would save the results in.to a file within the <tt>kioptrix</tt>&nbsp;directory. &nbsp;We should also take some useful information and copy it into our notes.<br/>
+<br/>
+<tt>cd kioptrix<br/>
+</tt><tt>gedit nikto.txt</tt><br/>
+Then paste your scanning report and save<br/>
+<br/>
+<br/>
+<b>Directory Busting - <tt>dirbuster</tt><br/>
+</b>Kali has a few built in directory busting tools: <tt>dirbuster</tt>, <tt>dirb</tt>&nbsp;&amp; <tt>gobuster</tt>.<br/>
+<br/>
+To run the tool we enter <tt>dirbuster&amp;</tt>&nbsp;in the terminal, then you will find a user interface will appear.<br/>
+<br/>
+<img src="image 7.png" /><i><br/>
+</i><i>Remember to placce the port <tt>:80</tt>&nbsp;at the end and you can check the <tt>Go Faster</tt>&nbsp;to speed up searches</i><br/>
+<br/>
+Click browse and navigate to the word-list files in the dirbuster directory.<br/>
+<br/>
+<b><tt>usr</tt>&nbsp;&gt; <tt>share</tt>&nbsp;&gt; <tt>wordlists</tt>&nbsp;&gt; <tt>dirbuster</tt>&nbsp;&gt; <tt>directory-list-2.3-small.txt<br/>
+</tt><tt><br/>
+</tt></b>The different files to choose from are for different levels of search you want to make. &nbsp;We can add as many different file extensions as we want but for this exercise we will just stick with PHP. &nbsp;We could add extra file extensions like: <tt>php</tt>,<tt>txt</tt>,zip,pdf,rar, etc. &nbsp;Please note the mor file extensions we use will make the search take longer - because for every directory it finds it will search for every file extension provided. &nbsp;<b>It is best to just stick to the file extensions you need or searching for</b>.<br/>
+<br/>
+When you start the search you will be able to see results on your terminal as well as the GUI. &nbsp;<br/>
+<br/>
+<img src="image 8.png" /><br/>
+<i>As the directories are found they appear here</i><br/>
+<br/>
+In the GUI yo uhave options to browse through the files by clicking on Results - Tree View.<br/>
+<br/>
+<img src="image 9.png" /><br/>
+<br/>
+<br/>
+We can look at the source code of the website to see if there might be some hidden creditenials that you may unexpectedly may find. &nbsp;This is more looking for mistakes made by your target. &nbsp;For exercises from Vulnhub you can check the source code for more information on the exercise.<br/>
+<br/>
+<br/>
+Using Burp Suite we will got to the Kioptrix webpage, then navigate to the burp suite and click Intercept is on. &nbsp;Refresh the Kioptrix webpage and you should get response like below.<br/>
+<br/>
+<img src="image 10.png" /><br/>
+<br/>
+We can then send this to the <b>Repeater</b>&nbsp;by clicking<tt>&nbsp;Ctrl+R</tt>&nbsp;or right click and press <b>Send to Repeater</b>.<br/>
+This will allow you to review the response in <b>real-time</b>&nbsp;and it allows you to <b>modify your requests</b>&nbsp;<i>(like sending a POST request instead of a GET request)</i>. &nbsp;This is good for prodding websites for information by testing their responses when we modify the requests.<br/>
+<br/>
+We can also set the scope, in our case we don't need to but you may find yourseflf in a situation where you need to focus your searches. &nbsp;You can set the scope to forcus on a particular seacrh area.<br/>
+<br/>
+<img src="image 11.png" /><br/>
+<i>Select Scope</i><br/>
+<br/>
+<img src="image 12.png" /><br/>
+<i>Select Add and enter IP address of the scope</i><br/>
+<br/>
+Still inside the Target tab, if we look at the response of the homepage we can see information on the server. &nbsp;It tells us the Apache version (just like with <tt>nmap</tt>&nbsp;and <tt>nikto</tt>). &nbsp;<br/>
+<br/>
+<img src="image 13.png" /><br/>
+<br/>
+We would make a note of this in our notes as this is another example of <i>information disclosure</i>; we would also want to take a photo of the resposne - as part of our report we would make to our client. &nbsp;<i>We want to take show the client all the vulnerablilities even if we didn't use all of them to run our exploit</i>.<br/>
+<br/>
+<br/>
+If we check the dirbuster app we can scroll through the directoreis; we will look at the usage directory and open one of the pages to view the content.<br/>
+<br/>
+<img src="image 14.png" /><br/>
+<i>Select a file to view the page - make sure the intercept is swictehd off in burp</i><br/>
+<br/>
+<br/>
+<img src="image 15.png" /><br/>
+<i>usage_202210.html</i><br/>
+<br/>
+When we scroll through the page it looks like theres a lot of information of statistics and graphs, but it is not of any use to use. &nbsp;At the bottom of the page we can see the page was craeted by <b>Webalizer</b>&nbsp;and the version number.<br/>
+<br/>
+<img src="image 16.png" /><br/>
+<br/>
+Now what we would do is search through each of the files within the directories in burp - this is to gather more information; note not every piece of data is going to be useful to you so you will have to make that desecion.<br/>
+<br/>
+What to look out for when information gathering:<ul><li>Service version info</li>
+<li>Any sort of backend directories</li>
+<li>Source code</li>
+<li>Check for vulnerablities with <tt>nikto</tt></li>
+<li>Any other information you may find useful.</li>
+</ul>
+</body></html>

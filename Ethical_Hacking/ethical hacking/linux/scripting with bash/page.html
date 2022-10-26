@@ -5,4 +5,105 @@
 <title>Scripting with Bash</title>
 </head><body><b><u>Scripting With Bash</u></b><br/>
 <br/>
+In this section we will cover how to write Bash scripts to get IP addresses and also how to automate the process.<br/>
+<br/>
+<b>Ping Sweep</b><br/>
+We will write a <b>ping sweep</b>&nbsp;that will ping a divice and if it's open to send us a result. &nbsp;With that result we will take the device's IP address. &nbsp;For the simplicity of this example, we wil ping our own IP address.<br/>
+<br/>
+<tt>ifconfig</tt><br/>
+<img src="image.png" /><br/>
+<i><tt>ifconfig</tt>&nbsp;to find our IP address</i><br/>
+<br/>
+<tt>ping 192.168.254.129</tt><br/>
+<img src="image 2.png" /><br/>
+<i>When we exit we will see how many packets responded</i><br/>
+<br/>
+When we ping an IP address, if the address exists we will recieve a response until we stop the connection. &nbsp;If there is no response then it means that the IP address was invalid or that it has a blocker.<br/>
+<br/>
+To automate our ping requests, we really want to look out for 1x packet from our ping. &nbsp;If we use <tt>-c 1</tt>&nbsp;at the end of our pings, this will tell the terminal that we just want one result back. &nbsp;<tt>-c</tt>&nbsp;means count so when we use<tt>&nbsp;-c 1</tt>&nbsp;we are saying just count <b>1x packet</b>.<br/>
+<br/>
+<tt>ping 192.168.254.129 -c 1</tt><br/>
+<img src="image 3.png" /><br/>
+<br/>
+We can save this command to a file. &nbsp;Then when we run the file we will get the results. <br/>
+If we look at the results more carfully, we can see that there's some information that we don't really need. &nbsp;We can use the <tt>grep</tt>&nbsp;command to filter out what we want from the file. &nbsp;When we use grep then followed by the string we are looking for, it will reveal the matching data and leave the rest.<br/>
+<br/>
+<b>Save ping to file</b><br/>
+<img src="image 4.png" /><br/>
+<br/>
+<b>View file</b><br/>
+<img src="image 5.png" /><br/>
+<br/>
+<b>Filter file with grep</b><br/>
+<img src="image 6.png" /><br/>
+<br/>
+We can add some more filters to get just the IP addresses by using the cut keyword. &nbsp;<br/>
+This will count to the number of spaces provided and select that from the data, leaving out the rest.<br/>
+<br/>
+<img src="image 7.png" /><br/>
+<br/>
+This returns the IP address but there's an unwanted semi-colon that we need to remove. &nbsp;We can do this with <tt>tr</tt>&nbsp;the command. &nbsp;We place this at the end and give it the characters to remove.<br/>
+<br/>
+<img src="image 8.png" /><br/>
+<br/>
+We will create a new <b>Bash file</b>&nbsp;using the <b>mousepad</b>&nbsp;text editor.<br/>
+<br/>
+<tt>mousepad ipsweep.sh</tt><br/>
+<img src="image 9.png" /><br/>
+<tt><i>.sh</i></tt><i>&nbsp;to create a bash file</i><br/>
+<br/>
+We will create a <b>for loop</b>&nbsp;so we can check the IP address from <b>1 - 254</b>. &nbsp;For the for loop we have created a variable called <tt>ip</tt>&nbsp;which will be used to loop through every IP address. &nbsp;<tt>`seq 1 254`</tt>&nbsp;is like a <b>range</b>, from 1 to 254.<br/>
+The<tt>&nbsp;$ </tt>in the for loop are place holders for our arguments to be passed through the for loop.<br/>
+<br/>
+<b>ipsweep.sh</b><br/>
+<img src="image 10.png" /><br/>
+<br/>
+<tt>$1</tt>&nbsp;is referencing the number of arguments being assed.<br/>
+<tt>$ip</tt>&nbsp;is referencing the last number of the IP address in the for loop.<br/>
+We only need to pass the<b>&nbsp;first 3x parts</b>&nbsp;of the IP address beacuse the for <b>loop will complete the rest</b>.<br/>
+<br/>
+Before we can run the file we have to change the permissions because by default it won't have full access.<br/>
+We do this by using the chmod method as explained in the previous lessons.<br/>
+<br/>
+<tt>chmod -x ipsweep.sh</tt><br/>
+<img src="image 11.png" /><br/>
+<i>Gives the file full permissions.</i><br/>
+<br/>
+<tt>ls -la</tt><br/>
+<img src="image 13.png" /><br/>
+<i>Check the permissions of the file</i><br/>
+<br/>
+Now we can run the file! &nbsp;To<b>&nbsp;run the file</b>&nbsp;we use <tt>./ipsweep.sh</tt>&nbsp;followed by the IP address we want. &nbsp;This will then do a for loop to check all the active IP addresses linked to that address.<br/>
+<br/>
+<tt>./ipsweep 192.168.254</tt><br/>
+<img src="image 12.png" /><br/>
+<br/>
+We can make <b>imporvements</b>&nbsp;by adding an <b>if statement</b>&nbsp;so that if the user <i>doesn't add an IP address the script will display a message</i>&nbsp;asking for a IP address.<br/>
+<br/>
+<img src="image 14.png" /><br/>
+<br/>
+<b>Always remember to close the <i>if statement</i>&nbsp;with <tt>fi</tt>.</b><br/>
+<br/>
+<img src="image 15.png" /><br/>
+<tt><i>fi</i></tt><i>&nbsp;closes the if statement</i><br/>
+<br/>
+Now when you run the file without an IP address you will recieve a message to eneter an IP address.<br/>
+<br/>
+<br/>
+<img src="image 16.png" /><br/>
+<br/>
+Now that we have the improved bash script we can save our list to a file. &nbsp;With this file we can then use for later to run our exploit.<br/>
+<br/>
+<tt>./ipsweep 192.168.254 &gt; ips.txt</tt><br/>
+<img src="image 17.png" /><br/>
+<br/>
+<b>One-Line Bash statements</b><br/>
+We also can use <b>one-line statments</b>&nbsp;in Bash to<i>&nbsp;iterate through each IP address</i>&nbsp;in my file. &nbsp;In a <b>real scenario</b>&nbsp;we would probe our target's network to retrieve any IP addresses. &nbsp;The ones we manage to retrieve we would then save to a file and then be able to run a <tt>nmap</tt>&nbsp;scan on the addresses via a <b>for loop</b>.<br/>
+<br/>
+<tt>for ip in $(cat ips.tx); do nmap $ip; done</tt><br/>
+<img src="image 18.png" /><br/>
+<tt><i>$(cat ips.tx);</i></tt><i>&nbsp;is what the for loop variable will loop through</i><br/>
+<br/>
+<img src="image 19.png" /><br/>
+<br/>
 </body></html>

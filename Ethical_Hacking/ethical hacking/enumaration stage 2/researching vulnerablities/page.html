@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Researching Vulnerablities</title>
+</head><body><b><u>Researching and Taking Notes</u></b><br/>
+<br/>
+Since we have started the enumeration, we have been collecting bits of information along the way. &nbsp;In this section we will cover the best practices when taking note. &nbsp;Taking good notes will help you organise your work and find exploits, as well as create a good report for your client.<br/>
+<br/>
+When taking notes we want to always think about the most valuable data and vulnerablity.<br/>
+Think of the least secure ports - thats where you want to find information to exploit a way inside the network.<br/>
+<br/>
+<b>Ports 80, 443, 139 are the most vulnerable.</b><br/>
+<br/>
+You want to organise your notes from the most vulnerable to the least.<br/>
+<br/>
+<br/>
+<b>My notes so far</b><br/>
+<img src="image.png" /><br/>
+<br/>
+We will go through all the notes to find vulnerabilities/exploits for each one and list them in a new file - <tt>vulnerabilities.txt</tt>.<br/>
+<br/>
+With these notes I will go to Google and search for exploits for results we found. &nbsp;We will begin by searching for <tt>mod_ssl </tt>exploit.<br/>
+<br/>
+<b>Google search mod_ssl</b><br/>
+<img src="image 2.png" /><br/>
+<br/>
+If we click on the second link https://www.exploit-db.com/exploits/764 we get information about the exploit and the even the script to run it. &nbsp;This exploit is a <b>Remote Buffer Overflow</b>&nbsp;- which will enter a character repeatedly. &nbsp;The site gives you the option to <i>download the exploit and also download a vulnerable app</i>&nbsp;as a virtual machine.<br/>
+<br/>
+We will make a note of this vulnerability in our notes.<br/>
+<br/>
+Google search apache 1.3.20<br/>
+<img src="image 3.png" /><br/>
+<i>The same link from exploit-db.com has appeared so we can say that exploit works for both Apache &amp; SSL </i><br/>
+<br/>
+If we click on the link at the top cvedtails.com, for this site we can just focus on the score of each exploit.<br/>
+<br/>
+<b>www.cvedetails.com</b><br/>
+<img src="image 4.png" /><br/>
+<i>If you see any exploits that are red then it means they will most likely work! &nbsp;The score is to rate the effectiveness of the exploit.</i><br/>
+<br/>
+Next is the SMB wo we will look up exploits for Samba 2.2.1.<br/>
+<br/>
+Google Samba 2.2.1 exploit<br/>
+<img src="image 5.png" /><br/>
+<i>Rapid7 are the same people who made metasploit - so they're good!</i><br/>
+<br/>
+<br/>
+When we click on the Rapid 7 link we get a description of the exploit, as well as how to run it on metasploit.<br/>
+<br/>
+<img src="image 6.png" /><br/>
+<br/>
+<img src="image 7.png" /><br/>
+<br/>
+From this we can get some valuable info and save it to our notes.<br/>
+<br/>
+We will click go to the thrid link at the bottom. &nbsp;This is another buffer overflow - this script is in Pearl, so you would need Pearl to run it. &nbsp;<br/>
+<img src="image 8.png" /><br/>
+It also give you the options for which tags to run on the script.<br/>
+<br/>
+<br/>
+<b>Searchsploit</b><br/>
+We can also <b>use the terminal to search for exploits</b>&nbsp;- this is <i>very good for a scenario where you are without internet</i>. &nbsp;Lets say we wanted to aerch for some more exploits for the <tt>Samba 2.2.1a</tt>. &nbsp;I would use <tt>searchploit</tt>&nbsp;then the then samba 2. &nbsp;We do not put the full version number so <tt>searchsploit</tt>&nbsp;can look for all possible versions.<br/>
+<br/>
+<tt>searchsploit samba 2</tt><br/>
+<img src="image 9.png" /><br/>
+<i>Code snippet - we can see </i><br/>
+<br/>
+<br/>
+When we are writing our reports/assement or client, we want to have it in a easily readable format. &nbsp;<br/>
+<img src="image 10.png" /><br/>
+<br/>
+</body></html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>OSI Models &amp; TCP/IP Suite</title>
+</head><body><b><u>OSI Models &amp; TCP/IP Suite</u></b><br/>
+<br/>
+We will cover the OSI Model &amp; the TCP-IP Suite, how they are used in the networking environment.<br/>
+<br/>
+<br/>
+<b>What is a networking model?<br/>
+</b><img src="image.png" /><br/>
+<i>The different colours represent different categories of protocols &amp; standards</i><br/>
+<br/>
+The different categories of protocols &amp; standards help define things like the structure &amp; usage of IP addresses, and physical details like electrical voltage when used on copper cables when transmitting data.<br/>
+<br/>
+If we had no protocols &amp; standards, different devices (like Dell &amp; Apple) would not be able to communicate with each other - only devices from the same manufacturer. &nbsp;<b>It is the protocols &amp; standards that allow commuction between devices on different networks</b>.<br/>
+<br/>
+<br/>
+<b>OSI Model</b><br/>
+Is used to standardise network communications. &nbsp;Although it is not in used today, networking engineers refer to the model today. &nbsp;The OSI Model is broken down into <b>7 layers of protocols &amp; standards</b>.<br/>
+<br/>
+<b>7 Layers of the OSI Model</b><br/>
+<img src="image 2.png" /><br/>
+<br/>
+When we <i>send</i>&nbsp;data, it passes through the <b>application (Layer 7)</b>&nbsp;then works its way down to the <b>physical layer (Layer 1)</b>; for the end host <i>recieveing</i>&nbsp;the data it passes through the <b>physical layer (Layer 1)</b>&nbsp;then works it's way up to the <b>application layer (Layer 7)</b>.<br/>
+<br/>
+<b>Application Layer<br/>
+</b><img src="image 3.png" /><br/>
+<i>Application definition</i><br/>
+<br/>
+The application layer interacts with software applications that has a <b>communication component</b>&nbsp;like a web browser. &nbsp;<b>Layer 7 only focuses on the protocols to interact with the application, not the application itself</b>.<br/>
+<br/>
+When we send data, as the <i>data passes through the layers</i>, <b>each layer adds some information to the data</b>. &nbsp;By the time the raw data is sent through Layer 1 it is encapsulated with data from the rest of the layers. &nbsp;<b>This is encapsulation</b>. &nbsp;By the time the data is sent through Layer 1 it is <b>sent through as electrical signals on a wire</b>.<br/>
+<img src="image 4.png" /><br/>
+When the data passes to the machine recieving it, it enters <i>Layer 1</i>&nbsp;as electrical signals and the data is de-encapsulated by the time it reaches the reciever's application <i>(Layer 7)</i>. &nbsp;De-ecnapsulation is the opposite process of encapsulatoin, where it <b>strips off data at each layer before reaching its final destination</b>.<br/>
+<br/>
+This <b>communication</b>&nbsp;<b>between</b>&nbsp;the two <b>different application layers</b>&nbsp;is known as <b>same-layer injection</b>. &nbsp;This allows the application to perform its functions described in the <i>Application definition</i>&nbsp;image.<br/>
+<br/>
+<b>Presentation Layer</b><br/>
+<img src="image 5.png" /><br/>
+<i>Presentation definition</i><br/>
+<br/>
+The presentation layer translates the data to the appropiate format for the end host to understand.<br/>
+<br/>
+<b>Session Layer</b><br/>
+<img src="image 6.png" /><br/>
+<i>Session definition </i><br/>
+<br/>
+The session management allows platforms to accomondate for continuous traffic (loads of people using their platform).<br/>
+<br/>
+<b>Top Three Layers<br/>
+</b><img src="image 7.png" /><b><br/>
+</b><i>Data being sent to the bottom 4 layers</i><br/>
+<br/>
+<b>Data at the top 3 layers</b>&nbsp;is sent to the <i>lower 4 layers</i>. &nbsp;The <b>bottom 4 layers actually do the work of the network</b>. &nbsp;As part of the encapsualtion, when the data is recieved at the <i>transport layer (Layer 4)</i>, a<b>&nbsp;header is attached</b>&nbsp;before sending the data to the next layer down.<br/>
+<br/>
+<b>Transport Layer</b><br/>
+<img src="image 8.png" /><br/>
+<i>Transport definition</i><br/>
+<br/>
+If data being sent is in <b>one big unit</b>, if <i>an error occurs</i>, then the <b>end host would not recieve</b>&nbsp;the message, video, page, etc. &nbsp;But if the data is transported into <b>segments</b>, then if there is an error, <b>it will only be applied to that segment</b>&nbsp;- meaning the rest of the data could be sent &amp; recieved.<i>&nbsp; Host-to-host</i>&nbsp;is also known as <b>end-to-end communication</b>; <i>Layer 4</i>&nbsp;also provides <b>process-to-process communication</b>&nbsp;for applications.<br/>
+<br/>
+<b>Segments<br/>
+</b><img src="image 9.png" /><br/>
+<br/>
+When<i>&nbsp;Layer 4 receives the data</i>, it <b>attaches a header</b>&nbsp;to the data, this is called a <b>segment</b>. &nbsp;The <b>segment is then sent to the network layer (Layer 3)</b>.<br/>
+<br/>
+<b>Network Layer<br/>
+</b><img src="image 10.png" /><br/>
+<i>Network definition</i><br/>
+<br/>
+Often there are <b>many paths</b>&nbsp;to navigate around a network, Layer 3 provides the<b>&nbsp;best path selection</b>&nbsp;- <i>think of it as Waze or Google Maps of the OSI Model!</i>&nbsp; When <i>Layer 3 recieves the segment</i>, the network layer <b>attaches a header</b>&nbsp;to the segment. &nbsp;This is called a <b>packet</b>; the <b>packet is then sent to the data link layer (Layer 2)</b>.<br/>
+<br/>
+<b>Packets<br/>
+</b><img src="image 11.png" /><br/>
+<br/>
+<br/>
+<br/>
+<b>Data Link<br/>
+</b><img src="image 12.png" /><br/>
+<i>Data link definition</i><br/>
+<br/>
+In <i>Layer 2</i>, <b>switches</b>&nbsp;look at the <b>destination layer 2 address</b>&nbsp;to <i>determine where to send the data</i>. &nbsp;When the <i>packet is recieved in layer 2</i>, the data link <b>attaches a header and a trailer</b>&nbsp;to the packet - this is called a <b>frame</b>. &nbsp;The <b>frame is then sent to the physical layer (Layer 1)</b>.<br/>
+<br/>
+<b>Frame<br/>
+</b><img src="image 13.png" /><b><br/>
+</b><b><br/>
+Physical Layer<br/>
+<img src="image 14.png" /><br/>
+</b><i>Physical definition</i><br/>
+<br/>
+<img src="image 15.png" /><br/>
+Once the frame is recieved by the client, the client's machine will de-encapsulate the data at each layer to view the data.<br/>
+<br/>
+<br/>
+<b>OSI Model - PDUs</b><br/>
+<img src="image 16.png" /><br/>
+<br/>
+<b>Acronymns for the OSI Model</b><br/>
+<img src="image 17.png" /><br/>
+<i>Use these acronyms to rember the OSI Model</i><br/>
+<br/>
+<br/>
+<b>TCP-IP Suite</b><br/>
+<img src="image 18.png" /><br/>
+<i>TCP-IP Suite definition</i><br/>
+<br/>
+<b>It's very important that you learn and understand the OSI Model because it is refered to even when using the TCP-IP model.</b><br/>
+<br/>
+<b>OSI vs TCP-IP<br/>
+</b><img src="image 19.png" /><br/>
+<i>Comparisons between the two models </i><br/>
+<br/>
+If you are <i>working on a TCP-IP model and someone refers to a layer</i>, they are <b>referencing a OSI Model layer</b>.<br/>
+<br/>
+<b>Same model with different names<br/>
+</b><img src="image 20.png" /><br/>
+<i>You may come across another model which is structured differently<br/>
+<br/>
+<img src="image 21.png" /><br/>
+Connection between two end hosts with their own routers. &nbsp;Host A is the server while Host B is the client.<br/>
+</i><br/>
+When Host A sends data to Host B, it goes through the encapsulation process as the data travels down to the link layer. &nbsp;Connection to the internet without WiFi means you would have to use an Ethernet cable; the router is referenced by the Ethernet symbol. <b>The router will look for the layer 3 (transport) address</b>&nbsp;within the packet so it knows where to send the data to. &nbsp;The <b>router de-encapsulates the data</b><i>&nbsp;to figure out where to send it</i>&nbsp;via its <b>transport address</b>; only when that is done <b>a frame is crerated</b>&nbsp;to send to the client. &nbsp;This could be done by fiber-optics, satelite, etc, then the client will<b>&nbsp;de-capsulate the data by doing the</b>&nbsp;<b>same process (reversed)</b>.<br/>
+<br/>
+<br/>
+<b>REMEMBER !!</b><br/>
+<ul><li>Network engineers only focus from the <b>transport layer to the physical layer (Layers 4 - 1)</b>.</li>
+</ul>
+</body></html>

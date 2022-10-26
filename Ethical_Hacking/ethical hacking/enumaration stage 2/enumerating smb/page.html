@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Enumerating SMB</title>
+</head><body><b><u>Enumerate SMB</u></b><br/>
+<br/>
+Continuing fom the previous session we have enumerated the http port (80), now we will do the same for <b>port 139</b>&nbsp;is the <b>SMB</b>&nbsp;port. &nbsp;SMB is the file-sharing port which is left open for most websites to allow sharing of files.<br/>
+<br/>
+SMB is commonly used in work environments &amp; internal environments. &nbsp;If you used a shared folder with other colleagues or individuals then you would be using SMB to share the data <b>between computers</b>.<br/>
+<br/>
+If we take a look at the <tt>nmap</tt>&nbsp;scan, we want to find any additional information on SMB. &nbsp;Close to the end of the results, we can see <tt>SMB2</tt>&nbsp;in the <tt>Host script results</tt>.<br/>
+<br/>
+<img src="image.png" /><br/>
+<i>More information about the version of <tt>SMB2</tt>&nbsp;is needed</i><br/>
+<br/>
+<b>We need to find the version of SMB to be able to check for exploits. </b><br/>
+<br/>
+We will try to make establish a connection with the SMB port. &nbsp;If we can establish a connection and get access, we can see if there any sensitive information - login details, passwords, etc.<br/>
+<br/>
+<br/>
+<b>Metasploit</b><br/>
+This is a very good built in exploitation framework in Kali, it will allow you to run exploit scripts, payloads and more! &nbsp;To run enter <tt>msfconsole</tt>&nbsp;in the terminal.<br/>
+<br/>
+<img src="image 2.png" /><br/>
+<br/>
+Your options will be shown where you can navigate through the menu or simply search for what we want.<br/>
+<br/>
+<img src="image 3.png" /><br/>
+<br/>
+<tt><b>auxiliary</b></tt><b>&nbsp;is scanning and enumaration modules.</b><br/>
+<br/>
+<tt>search smb<br/>
+</tt><img src="image 4.png" /><br/>
+<i>136 results are returned</i><br/>
+<br/>
+Let's study the syntax. &nbsp;The first part tells us <b>what type</b>&nbsp;of module it is; the next part tells us <b>what type of action</b>&nbsp;the module is doing. &nbsp;<br/>
+<br/>
+<img src="image 5.png" /><br/>
+<i>This is an <tt>auxiliary</tt>&nbsp;(enumeration) module, that captures data from the SMB</i><br/>
+<br/>
+What we want to look for is an auxiliary module for the SMB version. &nbsp;As you can see, it is a little time consuming tryign to find the right one. &nbsp;If you know the name of tehe module you are searching for you can write it as below<br/>
+<br/>
+<tt>search smb/smb_version</tt><br/>
+<img src="image 6.png" /><br/>
+<br/>
+To run the moudle we use the <tt>use</tt>&nbsp;keyword followed by the path of the module.<br/>
+<br/>
+<img src="image 7.png" /><br/>
+<br/>
+You will know when the module is activated becasue you will see the module name highlighted in the terminal. &nbsp;It's a good practice to enter <tt>info</tt>&nbsp;or <tt>options</tt>&nbsp;to see what possibilities are available.<br/>
+<br/>
+We are given the names of the<b>&nbsp;different options</b>&nbsp;we can use for the module - <i>think of them like function arguments</i>.<br/>
+<tt>RHOSTS</tt>&nbsp;refers to remote hosts. &nbsp;We can add a single hosts or a range of hosts using <b>CIDR identifiers</b>. &nbsp;We also get a brief description of each option available. &nbsp;<br/>
+<br/>
+Next we to set our <tt>RHOSTS</tt>&nbsp;(which will be out <b>target's IP address</b>).<br/>
+<img src="image 8.png" /><br/>
+<tt>set RHOSTS 192.168.254.130</tt><br/>
+<br/>
+Enter <tt>run</tt>&nbsp;to execute the module<br/>
+<img src="image 9.png" /><br/>
+We can take some information from th eresults which will be useful to us.<br/>
+<br/>
+We can make a note of the <b>Samba</b>&nbsp;version because that can be useful to us - find exploits on the version number.<br/>
+<br/>
+<br/>
+<b>SMBclient</b><br/>
+This is a Kali Linux tool that allows you to make an anonymous connection to the SMB. &nbsp;If you are able to make a connection, then you have gained access to potentially sensitive data or information which may be able to help your exploit further. &nbsp;You run SMBclient in the terminal:<br/>
+<br/>
+<tt>smbclient -L \\192.168.254.130</tt>&#09;<b>or</b>&nbsp;&#09;<tt>smbclient -L \\\\192.168.254.130\\</tt><br/>
+<img src="image 10.png" /><br/>
+<tt><i>-L</i></tt><i>&nbsp;returns a list of results</i><br/>
+<br/>
+You will be prompted to sign into but becasue we do not know the password we can hit enter.<br/>
+<br/>
+<img src="image 11.png" /><br/>
+<br/>
+We can see 2x shared files in the results - <tt>IPC$</tt>&nbsp;and <tt>ADMIN$</tt>. &nbsp;We can check the contents of the file by adding the directory on top of our original scan (remove the list tag).<br/>
+<br/>
+<tt>smbclient \\\\192.168.254.130\\ADMIN$<br/>
+</tt><img src="image 12.png" /><br/>
+<br/>
+The results tell us the connection failed. &nbsp;We can do the same to check the <tt>IPS$</tt>&nbsp;page.<br/>
+<br/>
+<tt>smbclient \\\\192.168.254.130\\IPS$<br/>
+</tt><img src="image 13.png" /><br/>
+<i>The results tell us the connection failed</i><br/>
+<br/>
+</body></html>

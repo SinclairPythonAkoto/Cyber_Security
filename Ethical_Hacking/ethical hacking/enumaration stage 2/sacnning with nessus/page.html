@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Sacnning with Nessus</title>
+</head><body><b><u>Scanning With Nessus</u></b><br/>
+<ul><li>Nessus is a vulneralbility scanner </li>
+<li>Pen-testers and ethical hackers use this</li>
+<li>Good for external assessments where you can send email notofications to the client to let them know that the penetration is about to satrt</li>
+<li>You can automate the scans - what time to start etc</li>
+<li>While you let the scans run you can be gathering more information - scans take really long to comeplete!</li>
+</ul>
+<br/>
+<br/>
+Nessus Installation<br/>
+First we need to download the app from the Tenable website.<br/>
+<br/>
+<img src="image.png" /><br/>
+<i>Select the link from the Tenable website.</i><br/>
+<br/>
+When we search for the Ubuntu deb 64-bit package - look for the Linux - Ubuntu - amd64.<br/>
+<br/>
+<img src="image 2.png" /><br/>
+<i>You can download and save the package</i><br/>
+<br/>
+With the package downloaded we need to go to the terminal to install it. &nbsp;In the terminal, navigate to the Downloads folder (or whichever folder you saved the package to). <br/>
+<br/>
+<tt>dpkg -i Nessus-10.3.0-ubuntu1404_amd64.deb</tt><br/>
+<img src="image 3.png" /><br/>
+<br/>
+To start the Nesus tool run the following in the terminal: <tt>/bin/systemctl start nessusd.service</tt>.<br/>
+<br/>
+Click on the link or enter <tt>https://kali:8834/</tt>&nbsp;in the web browser.<br/>
+<br/>
+<img src="image 4.png" /><br/>
+A loading page will appear after enetring the web address.<br/>
+<br/>
+<b>You will need to create an account to start using the app.</b><br/>
+<br/>
+<br/>
+<br/>
+</body></html>

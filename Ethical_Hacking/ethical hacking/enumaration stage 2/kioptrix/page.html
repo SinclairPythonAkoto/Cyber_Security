@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Kioptrix</title>
+</head><body><b><u>Installing Kioptrix</u></b><br/>
+<br/>
+This is a virtual machine which you can download from <b>vulnhub.com</b>. &nbsp;Once downloaded you can try break into the network - this is good for training your skills like the bugcrowd website. &nbsp;<b>Vulnhub is buit into your Kali machine</b>.<br/>
+<br/>
+<b>The goal of the Kioptrix app is to get to the root access of the machine. &nbsp;There are many ways it can be done also to test your skills!</b><br/>
+<br/>
+Kioptrix is from the vulnhub website but we will download ot from the course website:<i>&nbsp;tcm-sec.com/kioptrix</i>.<br/>
+<br/>
+Download the package <b>ova</b>&nbsp;file and then open your VMWare and open the machine.<br/>
+<br/>
+Open the VMWare or your virtual box to open a virtual machine. &nbsp;Navigate to the downloaded file then select the virtual machine to open.<br/>
+<br/>
+Go to the setting of the virtual machine - we can change the the memory to 256MB (but not any lower).<br/>
+In <b>Network Adapte</b>r change the settings to NAT.<br/>
+<br/>
+Now you are good to go, play the machine to start the virtual machine.<br/>
+<br/>
+Use these details to login<ul><li><b>john</b></li>
+<li><b>TwoCows2</b></li>
+</ul>
+<br/>
+To find the machine's IP address we can ping a random IP address (it doesn't have to be valid).<br/>
+<br/>
+ping 8.8.8.8<br/>
+<img src="image.png" /><br/>
+<br/>
+We can also use <tt>arp-scan</tt>&nbsp;which is a built in tool which is similar to a net scan.<br/>
+<br/>
+<tt>sudo arp-scan -l</tt><br/>
+<img src="image 2.png" /><br/>
+<br/>
+Because I have a few virtual machines installed, I have highighted the macthing IP address found in the Kioptrix machine. &nbsp;You can always run ip a to find the IP address of your machine quickly. &nbsp;<br/>
+<br/>
+With this we can start running scans.<br/>
+<br/>
+<br/>
+<br/>
+192.168.254.130</body></html>

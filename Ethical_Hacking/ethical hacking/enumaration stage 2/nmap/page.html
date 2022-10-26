@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Nmap</title>
+</head><body><b><u>Enumerating With Nmap (Network Mapper)</u></b><br/>
+<br/>
+Using the Kioptrix app, we will enumerate the IP address to try to gain root access of the machine.<br/>
+<br/>
+By using <tt>ping</tt>&nbsp;on the Kioptrix machine, I mananaged to get the IP address of the machine: <b>192.168.254.130</b>.<br/>
+<br/>
+Now that we have the Kioptrix machine running, we need to determine where it is then we can do some scanning.<br/>
+To do this we can use a tool called net discover. &nbsp;It used arp to detect all the machines on the network we provide.<br/>
+<br/>
+We will get our IP adress by using<tt>&nbsp;ip a</tt>&nbsp;then do a <tt>netdiscover</tt>&nbsp;of the IP address.<br/>
+<br/>
+<tt>netdiscover -r 192.168.254.0/24</tt><br/>
+<img src="image.png" /><br/>
+<i><tt>-r</tt>&nbsp;is for range</i><br/>
+<br/>
+Remember you will need to be in the<b>&nbsp;root directory</b>&nbsp;to use <tt>netdiscovery</tt>.<br/>
+<br/>
+When you press enter you will get a list of all the machines on the network. &nbsp;We can fine the IP address for the Kioptrix machine.<br/>
+<br/>
+<img src="image 2.png" /><br/>
+<br/>
+This is like dowblechecking that the machine is valid in our network.<br/>
+We can now use <tt>nmap</tt>&nbsp;to scan for any open ports and services on the Kioptrix address we now have.<br/>
+<br/>
+We can do a <b>stealth scan</b>&nbsp;(<tt>-sS</tt>&nbsp;on the port) - however this will <b>NOT</b>&nbsp;make you completely hidden. &nbsp;If you come across a target with good security you'll get caught! &nbsp;However the tutor for the course has stated that he manages to evade visibility <b>80%</b>&nbsp;of the time using <tt>nmap</tt>. &nbsp;Not everyone may have good security on their networks set up, but know that <i>nmap's stealth scan</i>&nbsp;is <b>not completly hidden</b>. &nbsp;<br/>
+<br/>
+These are regarded as stealth becasue <b>it does not complete the full 3-way handshake</b>&nbsp;and <i>resets the handshake on the final connection</i>, making it an annonymous connection. &nbsp;<b>As stated before, this will no longer leave you completely hidden.<br/>
+</b><b><br/>
+</b><b>Let's look at some of the nmap tags and what they mean.</b><br/>
+<br/>
+<img src="image 3.png" /><br/>
+<ul><li><tt>-T4</tt>&nbsp;lets you <b>choose the speed</b>&nbsp;of the port scans between 1 - 5. &nbsp;<b>1 being very slow, and 4 being very fast</b>. &nbsp;These can be changed to suite your situation. &nbsp;For challenegs like Vulnhub you won't ned to care about the speed.</li>
+<li><tt>-p-</tt>&nbsp;is saying you want to access all ports; this will scan all 65,000+ ports for us. &nbsp;If we do not add this at all, nmap will scan for the top 1000 most common ports (like 80, 443, 139, 445, etc). &nbsp;We want to run a port scan on all ports just in case we are able to find a host on an uncommon port.</li>
+<li><tt>-p 80,443,53</tt>&nbsp;this also allows you ro scan for specific ports</li>
+<li><tt>-A</tt>&nbsp;stands for everything. &nbsp;this tells nmap that we want all the fingerprint analysis of each port. &nbsp;This will give you information about the operating system, the version, etc.</li>
+<li><b><tt>nmap --help</tt></b>&nbsp;is also a good way to get to know and understand all the different tags and how you can use them.</li>
+<li><tt>-sn</tt>&nbsp;will allow you to do a ping scan which you could then do a <b>ping sweep</b>&nbsp;on a netwrok.</li>
+<li><tt>-sU</tt>&nbsp;is <b>UDP</b>&nbsp;scan that &nbsp;also has 65,000+ ports. &nbsp;It is a <b>connectionless protocol</b>, so we don't want to go through all ports just the first 1000. &nbsp;This is going to take a <b>very long time</b>&nbsp;because of the connectionless protocol.</li>
+</ul>
+<br/>
+<b>It is quicker to be selective on which ports you want to scan then do a <tt>-A</tt>&nbsp;scan on the port, instead of scanning all ports and doing a <tt>-A</tt>&nbsp;scan on each one.</b><br/>
+<br/>
+<b>You can even try to script this approach.</b><br/>
+<br/>
+<tt>nmap -T4 -p- -A 192.168.254.130</tt><br/>
+<img src="image 4.png" /><br/>
+<i>Starts the scan on the Kioptrix machine</i><br/>
+<br/>
+nmap results<br/>
+<img src="image 5.png" /><br/>
+<i>From the results we can see that the Kioptrix machine has 6 ports open.</i><br/>
+<br/>
+<i>As a pen-tester it is our job to <b>get the information from the ports and research for any vulnerablilties</b>&nbsp;so we can use as an exploit.<br/>
+</i><ul><li>port 80 &amp; 443 are <b>websites</b></li>
+<li>port 139 is for <b>file shares</b></li>
+</ul>
+<br/>
+<br/>
+<br/>
+<b>REMEMBER !!</b><br/>
+<ul><li>Get used to the <tt>nmap</tt>&nbsp;syntax and the <b>different tags</b>&nbsp;you can use. &nbsp;You want to familiarise yourself with the common tags.</li>
+</ul>
+</body></html>

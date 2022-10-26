@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Enumerating SSH</title>
+</head><body><b><u>Enumerating SSH</u></b><br/>
+<br/>
+Continuing fron the Kioptrix challenge, we have enumerated the HTTP &amp; SMB ports, now we will now enumerate the SSH port. <br/>
+<br/>
+<b>First we will make a note of the version number of the SSH.</b><br/>
+<br/>
+We will attempt to access a connection with the SHH, if we get a connection we will be able to get information to see what is running.<br/>
+<br/>
+To try an establish a connection we simply write ssh followed by the IP address.<br/>
+<br/>
+<tt>ssh 192.168.254.130</tt><br/>
+<img src="image.png" /><br/>
+<br/>
+<tt>ssh 192.168.254.130 </tt>would be the normal syntax for a new ssh, but because this one is old we have to add the shh keys with it - these are like hashed passwords for each IP address with ssh.<br/>
+<br/>
+You may come across an <b>old SSH</b>&nbsp;so <i>follow the same steps</i>.<br/>
+<br/>
+<img src="image 2.png" /><br/>
+<br/>
+Rewrite the shh and IP and include<tt>&nbsp;-oKexAlgorithms=+</tt>&nbsp;and then attach the section highlighted to the end. &nbsp;Once that is done we need add an extra tag - <tt>-oHostKeyAlgorithms=+ssh-dss</tt>. &nbsp;We will still get an error message with different tags to choose from.<br/>
+<br/>
+<tt>ssh 192.168.254.130 -oKexAlgorithms=+diffie-hellman-group1-sha1 -oHostKeyAlgorithms=+ssh-dss</tt><br/>
+<img src="image 3.png" /><br/>
+<br/>
+<tt>ssh 192.168.254.130 -oKexAlgorithms=+diffie-hellman-group1-sha1 -oHostKeyAlgorithms=+ssh-dss -c aes128-cbc<br/>
+</tt><img src="image 4.png" /><br/>
+We have gained access but could but needed a password<br/>
+<br/>
+<i>In this example we could not get any data from a connection. &nbsp;Sometimes you will get a banner telling you what version the SSH is using and potentially who/what company built it etc.</i><br/>
+<br/>
+</body></html>

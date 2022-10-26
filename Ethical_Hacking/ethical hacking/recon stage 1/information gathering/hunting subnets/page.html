@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Hunting Subnets</title>
+</head><body><b><u>Hunting Subnet </u></b><br/>
+<br/>
+In this section we will cover the number of various ways to gather information from the web. &nbsp;This will be a mixture of <b>active</b>&nbsp;and <b>passive</b>&nbsp;recon methods.<br/>
+<ul><li>You want to find sub domains of the target (if your target is a website)</li>
+<li>Example of a subdomain would be: <i>info.sales.tesla.com</i>&nbsp;or dev.tesla.com</li>
+<li>If we just stick to the generic website (like tesla.com) we are missing out on all the other possible subdomains &amp; ports</li>
+</ul>
+<br/>
+<b>sublist3r</b><br/>
+We can install this tool from the terminal.<br/>
+<br/>
+<tt>apt install sublist3r</tt><br/>
+<img src="image.png" /><br/>
+Make sure to switch to root when installing<br/>
+<br/>
+This will check to see if the web domain we give it has any subdomains. &nbsp;We call the name of the tool, then followed by the domain name. &nbsp;We have to inlude <tt>-d</tt>&nbsp;to signify we want to pass a domain as an argument.<br/>
+<br/>
+<tt>sublist3r -d tesla.com</tt><br/>
+<img src="image 2.png" /><br/>
+You can ignore the warning, the results will still be returned if found<br/>
+<br/>
+As you can see it returns all the possible subdomains it found. &nbsp;You may be doing a search on domain that has many<br/>
+subdomains and find that <i>the seacrh is taking slow</i>. &nbsp;You can speed this up with a method called <b>threading</b>&nbsp;where we take a function a multiply it several times - <b>making the execution time quicker</b>. &nbsp;To add a thread we simply add a <tt>-t</tt>&nbsp;to signify we want to create a thread then we add the number of threads we want.<br/>
+<br/>
+<tt>sublist3r -d tesla.com -t 100</tt><br/>
+<img src="image 4.png" /><br/>
+<br/>
+We can use the <tt>--help</tt>&nbsp;to look up the extra commands we could use.<br/>
+<br/>
+<tt>sublist3r --help</tt><br/>
+<img src="image 5.png" /><br/>
+<br/>
+<br/>
+<b>crt.sh</b><br/>
+This is a website you can use to check for any subdomains. &nbsp;All you need to do is enter the domain name and it will <br/>
+return a list of all the subdomains found. &nbsp;We can add the <b>wildcard</b>&nbsp;entery for a subnet<i>&nbsp;- <tt>*.tesla.com</tt></i>&nbsp;for the website to return all the SSH sub domains of the target's website.<br/>
+<br/>
+<i>Some of the subdomains to look for:</i><ul><li>sso - single sign on</li>
+<li>toolbox</li>
+<li>dev</li>
+<li>vpn</li>
+<li>api-toolbox</li>
+<li>sso-dev</li>
+</ul>
+<br/>
+<br/>
+<b>OWASP Amass</b><br/>
+This is very similar to <tt>sublist3r</tt>&nbsp;but it give you a lot more information back. &nbsp;To install we should Google for their GitHub. &nbsp;It is in Kali Linux so all we need to do is install it (from root).<br/>
+<br/>
+<tt>apt-get install amass</tt><br/>
+<img src="image 3.png" /><br/>
+<br/>
+<br/>
+You can use tools such as <b>tomnomnom</b>&nbsp;that takes a list of domians and probes them for working http &amp; https servers. &nbsp;Google: <b>tomnomnom httpobe github</b>.<br/>
+<br/>
+</body></html>

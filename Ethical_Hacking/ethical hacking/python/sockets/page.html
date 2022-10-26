@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>sockets</title>
+</head><body><b><u>Sockets</u></b><br/>
+<br/>
+<i>Sockets</i>&nbsp;are used to <b>connect two nodes</b>&nbsp;together. &nbsp;In this session we will use a socket to connect to a port of an IP address. &nbsp;Sockets will come into play as a pen-tester to be able to reach out to a specific port and send a'n exploit to the target.<br/>
+<br/>
+We will create a simple <b>socket script</b>&nbsp;which will allow us <b>to connect to an open port</b>.<br/>
+<br/>
+First we will create a Python file with <tt>gedit</tt>. &nbsp;<i>Please note we can name our file</i>&nbsp;<b>anything apart from "socket"</b>&nbsp;otherwise the file won't run - it will thijnk we are trying to execute Python's socket module.<br/>
+<br/>
+For the purpose of this session I will name the file <tt>socks.py</tt>.<br/>
+<br/>
+<tt>gedit socks.py&amp;</tt><br/>
+<img src="image.png" /><br/>
+<i>A new window will appear for you to start adding scripts to your file.</i><br/>
+<br/>
+The first thing we do is to declare a <b>shebang (<tt>#!</tt>) </b>to tell the kernal that a <b>Python interpreter is needed for this script</b>.<br/>
+We will tell the program to locate the Python application in the <b>bin directory</b>&nbsp;and then run our <tt>socks.py</tt>&nbsp;file.<br/>
+<br/>
+<tt>#!/bin/python3</tt><br/>
+<img src="image 2.png" /><br/>
+<i>Add shebang to file</i><br/>
+<br/>
+<br/>
+We import the <tt>socket</tt>&nbsp;module then create our<b>&nbsp;local host and port variables</b>; we set the localhost (<tt>HOST</tt>) variable to your machine's local host then create your own port number.<br/>
+<br/>
+<img src="image 3.png" /><br/>
+<i>Your port can be any number you want</i><br/>
+<br/>
+<tt>socket.AF_INET</tt>&nbsp;connects to IPv4 <b>IP addresses</b>&nbsp;and <tt>socket.SOCK_STREAM</tt>&nbsp;is referencing a <b>port</b>. &nbsp;This script is now ready to <b>establish a connection with the port</b>&nbsp;via the host address provided. &nbsp;We can run this code to see what we get. &nbsp;In order to run the code, firstly we want to be able to set up a way where we can <b>listen in or view the traffic</b>&nbsp;in the port we have created using a feature called <b>netcat</b>.<br/>
+<br/>
+We will now open a new terminal to create a listening port using <b>netcat</b>. &nbsp;<i>We will be listening in to the port we have created in the Python script</i>.<br/>
+<br/>
+<tt>nc -nvlp 7777<br/>
+</tt><img src="image 4.png" /><br/>
+<tt><i>-nvlp</i></tt><i>&nbsp;allows netcat to listen a port</i><br/>
+&nbsp;<br/>
+When we run our Python file, we will establish a connection to our 7777 port via our local host. &nbsp;Because we have the netcat running, this will be listening out to any calls being made on the port and will pick up our connection.<br/>
+<br/>
+<b>Run script</b><br/>
+<img src="image 5.png" /><br/>
+<br/>
+<b>Listening with netcat</b><br/>
+<img src="image 6.png" /><br/>
+<i>It has picked up a connection from our local host</i><br/>
+<br/>
+Now that we have checked the connection and it works, we can go back to our script to create our exploit because it doesn't do anything as of now.<br/>
+<br/>
+<br/>
+From this we have built a simple script that connects two nodes. &nbsp;In the next lesson we will<b>&nbsp;use this script to create a port scanner</b>.<br/>
+<br/>
+</body></html>

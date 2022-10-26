@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<node>
+<version>6</version>
+<dict>
+  <key>title</key><string>Day 03 Lab - OSI Model.pkt</string>
+  <key>nodeid</key><string>4e629948-cd5d-454f-a626-b956264b3dc2</string>
+  <key>modified_time</key><integer>1666610191</integer>
+  <key>version</key><integer>6</integer>
+  <key>payload_filename</key><string>day 03 lab - osi model.pkt</string>
+  <key>content_type</key><string>application/octet-stream</string>
+  <key>created_time</key><integer>1666610191</integer>
+  <key>order</key><integer>0</integer>
+</dict>
+</node>

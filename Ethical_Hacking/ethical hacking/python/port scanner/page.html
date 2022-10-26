@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Port Scanner</title>
+</head><body><b><u>Building A Port Scanner</u></b><br/>
+<br/>
+For this session we will build a <b>port scanner</b>&nbsp;which will <b>scan the ports of the IP address we give it</b>, and return information on on it - <b>if it's an open or closed port.</b><br/>
+<br/>
+We create a file with <tt>gedit</tt>&nbsp;and call it <tt>scanner.py</tt>.<br/>
+<br/>
+<tt>gedit scanner.py&amp;</tt><br/>
+<img src="image 3.png" /><br/>
+<i>create new file using <tt>gedit</tt></i><br/>
+<br/>
+<img src="image.png" /><br/>
+<i>scanner.py</i><br/>
+<br/>
+We have imported <b>sys</b>&nbsp;so we can keep track of the number of arguments are passed to your script. &nbsp;<tt>sys</tt>&nbsp;is a module that connects the script to the <b>machine's system</b>.<br/>
+<br/>
+<tt>argv</tt>&nbsp;is the same as placing a placeholder with<tt>&nbsp;$ </tt>in bash. &nbsp;So Becasue we have <tt>len(sys.argv) == 2</tt>, we are saying that the <b>total number of arguements should be 2x</b>. &nbsp;When we write <tt>sys.argv[1]</tt>, we are referencing to the <b>second arguement</b>.<br/>
+<br/>
+<i><b>Remember the first argument is the Python file that you are running and the second arguement is the ip address you are searching through.</b></i><br/>
+<br/>
+In our if statement, if the user <b>does not enter an argument</b>&nbsp;when running the script, the will get <b>an error message</b>&nbsp;reminding them to add an IP address. &nbsp;<i>If the user enters an IP address it will be printed to the screen</i>.<br/>
+Notice we are getting the host by name and then converting it to an IP address. &nbsp;This is because if the user enters a <b>host name instead</b>&nbsp;(<i>where it has a DNS leading to an IP address</i>).<br/>
+<br/>
+<i>We can check if this works by running the script without an IP address.</i><br/>
+<br/>
+<tt>python3 scanner.py<br/>
+</tt><img src="image 2.png" /><br/>
+<i>We get a message to add an IP address</i><br/>
+<br/>
+Next we will add a banner to show the user who we are scanning and the time the scan started at.<br/>
+<br/>
+<img src="image 4.png" /><br/>
+<i>Print out the target with the time of scan</i><br/>
+<br/>
+<img src="image 5.png" /><br/>
+<br/>
+<br/>
+Now we will create a<b>&nbsp;try block</b>&nbsp;to make an attempt to connect to a port. &nbsp;With a try block we first try to run the code. Then if there is an error we <b>raise an exception</b>&nbsp;which we will create a print statement for.<br/>
+<br/>
+<b>try block</b><br/>
+<img src="image 6.png" /><br/>
+<br/>
+Lets break down what we are doing line by line. &nbsp;We first want to search through the ports between 50 - 85 (we could <br/>
+search for all ports but theres over 65,000!).<br/>
+<br/>
+<tt>for port in range(50, 85):</tt><br/>
+<img src="image 7.png" /><br/>
+Search ports between 49 - 84<br/>
+<br/>
+Then we declare the type of connection we want to make - connect to an IPv4 IP address and a port.<br/>
+<br/>
+<tt>s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</tt><br/>
+<img src="image 8.png" /><br/>
+<i>Create a connection to an IPv4 address and a port</i><br/>
+<br/>
+When we connect to a port we don't want to be waiting for too long to see if there's a connection or not, so we set <br/>
+a default on the time. &nbsp;It will take 1x second to check for a connection then moves on to find the next port. <br/>
+<br/>
+<tt>socket.setdefaulttimeout(1)</tt><br/>
+<img src="image 9.png" /><br/>
+Sets a default on how long each search for a connection should take<br/>
+<br/>
+Now the <tt>s</tt>&nbsp;variable can give us <b>access to a socket</b>, all we need to do is <i>pass in an IP address and a port</i>. &nbsp;We <b>store this connection</b>&nbsp;to the <tt>result</tt>&nbsp;variable. &nbsp;<tt>connect_ex</tt>&nbsp;returns checks for an <b>invalid</b>&nbsp;connection; it returns 0 if the connection is valid and 1 if the connection is invalid.<br/>
+<br/>
+<tt>result = s.connect_ex((target, port))</tt><br/>
+<img src="image 10.png" /><br/>
+<i>Checks for an invalid connection</i><br/>
+<br/>
+So now we can just check if we get a 1 or a 0 to determine our result. &nbsp;We want to check if the port is open; if it is, we print a message to the user letting them know the connection is open.<br/>
+<br/>
+<tt>if result == 0</tt><br/>
+<img src="image 11.png" /><br/>
+<i>Checks if the connection exsits then returns the port number</i><br/>
+<br/>
+Now we will add our <b>exceptions</b>&nbsp;which will be executed if the <i>try block</i>&nbsp;doesn't work. <br/>
+<br/>
+<img src="image 12.png" /><br/>
+<br/>
+<tt>KeyboardInterrupt</tt>&nbsp;is an execption for when we <b>use the keyboard to exit</b>. &nbsp;If this is picked up then we do a <b>system exit</b>.<br/>
+<tt>socket.gaierror</tt>&nbsp;is for when the DNS <b>cannot</b>&nbsp;find the host name, we will do a <i>system exit.</i><br/>
+<tt>socket.error </tt>is for when we cannot make any type of connection. &nbsp; If this is picked up then we do a <i>system exit</i>.<br/>
+<br/>
+We must note that this is <b>not the best method</b>&nbsp;to scan for ports as it will take 1 second for each scan (<i>roughly 35 seconds</i>). &nbsp;There are tools that can scan ports much more effieciently and quicker, plus we could imporve the logic of this script by using what is known as <b>threading</b>&nbsp;- where we run <b>multiple connection scans at the same time</b>.<br/>
+<br/>
+I will run this against my <i>router</i>. &nbsp;I'm using my Kali Linux from my Windows machine, so I will check for the routers IP address in the <b>Windows command promt</b>. &nbsp;Once I enter ipconfig, we can find the routers IP address if we look for the <tt>Default Gateway</tt>&nbsp;number.<br/>
+<br/>
+<tt>ipconfig</tt><br/>
+<img src="image 13.png" /><br/>
+<i>This is taken from my wireless LAN (router)</i><br/>
+<br/>
+<tt>python3 scanner.py 192.168.1.1<br/>
+</tt><img src="image 14.png" /><br/>
+<i>This tells us which ports are open in the router</i><br/>
+<br/>
+The router should have <i>port 53 open</i>&nbsp;becasue of <b>DNS</b>&nbsp;&amp; <i>port 80</i>&nbsp;to <b>access the web</b>&nbsp;interface. &nbsp;Please note how long it takes, this is another example of why this is not the best way (especially if you have a slow internet speed).<br/>
+<br/>
+We can store the connections in a file and then do an <b>nmap</b>&nbsp;/ <b>netcat</b>&nbsp;seacrh on them later.<br/>
+<img src="image 15.png" /></body></html>

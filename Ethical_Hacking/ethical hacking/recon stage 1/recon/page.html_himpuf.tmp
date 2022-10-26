@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Passive Recon</title>
+</head><body><b><u>Passive Recon Overview<br/>
+</u></b><br/>
+This is a diagram to show the different examples of passive recon.<br/>
+<img src="image.png" /><br/>
+You may be tasked with a physical assessment so these are the type of things you would look for.<br/>
+<br/>
+<b>This is a quick overview of how we would recon a web / host address which we will cover in the course.</b><br/>
+<img src="image 2.png" /><br/>
+<br/>
+Target Validation<ul><li>First thing is to validate your target address - this is the correct address for the target?</li>
+<li>If your are given an incorrect address you can validate the address before you start any exploits.</li>
+</ul>
+<br/>
+Finding Subdomains<ul><li>Use tools like Google Fu &amp; Nmap to browse for subdomians - more will be covered in the course</li>
+</ul>
+<br/>
+Fingerprinting <ul><li>What is running on a website / host? &nbsp;What type of services are out there</li>
+</ul>
+<br/>
+Data Breaches<br/>
+<br/>
+</body></html>
